@@ -99,6 +99,7 @@ router.get('/download/:id', (req, res) => {
         // path.join è un metodo della libreria path di Node.js utilizzato
         // per unire i segmenti di percorso in un unico percorso.
       const filePath = path.join(file.work);
+      console.log("path: "+filePath)
       res.download(filePath, file.name, (err) => {
         if (err) {
           console.error('Errore nel download del file:', err);
