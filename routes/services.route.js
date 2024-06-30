@@ -90,7 +90,10 @@ router.get("/stream/uploads/:videofile", (req, res) => {
 
 router.get('/download/:id', (req, res) => {
     const fileId = req.params.id;
+    console.log("FileID: "+fileId)
     const file = portfolioDatabase.data.find(f => f.id == fileId);
+    console.log("File: "+file)
+
     
     if (file) {
         // path.join è un metodo della libreria path di Node.js utilizzato
