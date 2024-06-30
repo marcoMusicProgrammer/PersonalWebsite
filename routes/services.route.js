@@ -103,7 +103,7 @@ router.get('/download/:id', (req, res) => {
       res.download(filePath, file.name, (err) => {
         if (err) {
           console.error('Errore nel download del file:', err);
-          res.status(500).send('Errore nel download del file');
+          res.status(500).send('Errore nel download del file ecco');
         }
       });
     } else {
