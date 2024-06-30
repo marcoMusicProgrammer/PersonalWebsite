@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jpeg2Png</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <%- include('header/header.ejs') %>
+
+        <nav class="pagine">
+            <ol>
+                <li class="pagina"><a href="/">Convertitori</a> </li>
+                <li class="pagina"><a href="/png2jpg">Png2Jpeg</a> </li>
+            </ol>
+        </nav>
+        
+        <div class="converter">
+
+            <label for="fileInput">Scegli un'immagine PNG</label>
+            <br>
+            <br>
+            <input type="file" id="filePNG" name="image" accept=".png"/>
+            <br>
+            <button onclick='convertToJPG()' value="Clicca per convertire"><b>Download JPEG!</b></button>
+            
+        </div>
+
+        <%- include('footer/footer.ejs') %>
+    </div>
+
+    <script src="/js/pngToJpg.js"></script>
+
+</body>
+</html>

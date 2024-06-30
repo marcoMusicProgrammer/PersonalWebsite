@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "email": "marco.maisto@hotmail.it",
+      "titolo": "Prova",
+      "testo": "Ciao, questa è una prova."
+    },
+    {
+      "email": "disciplina.metal@gmail.com",
+      "titolo": "Ottimo sito",
+      "testo": "Ciao Marco, il tuo è proprio un bellissimo sito web!"
+    },
+    {
+      "email": "massimo.marchi@consmilano.it",
+      "titolo": "contatti",
+      "testo": "Avrei bisogno del suo cellulare grazie"
+    },
+    {
+      "email": "",
+      "titolo": "",
+      "testo": ""
+    }
+  ]
+}

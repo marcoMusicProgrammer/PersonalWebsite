@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Converter</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="libraries/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+         <div class="main">
+            <div class="contact-section">
+                
+                <form action="/login" method="post">
+                    <% var logErr
+                    if (flash){ 
+                        flash.forEach(errore => {
+                            switch (errore.path) {
+                                case "password":
+                                    logErr = errore.msg
+                                    break;
+                                default:
+                                    break;
+                            }
+                        });
+                        <!-- console.log(flash) -->
+                    } 
+                %>
+                    <label for="password">Password:</label>
+                    <div class="password-login">
+                        <input type="password" id="password" name="password" required><span style="color: red;""><%= logErr %></span>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+                <!-- <div id="body-section1"> -->
+                    
+                <!-- </div> -->
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+</body>
+
+</html>

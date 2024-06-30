@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container">
+        <nav class="header"> 
+            <div class="title">
+                <%- include('header/header.ejs') %>
+            </div>
+            <ul class="pagina">
+                <li >
+                    <a href="/" >
+                        <h2 >Home</h1>
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/music">
+                        <h2>Music</h2>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/portfolio">
+                        <h2>Portfolio</h2>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/contacts">
+                        <h2>Contact</h2>
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <div class="main">
+            <div class="section1">
+                <div id="title-section">
+                    <h2>Electroacustic Compositions</h2>
+                </div>
+                <div class="horizontal-line"></div> 
+
+                <div id="body-section">
+                    <% if(typeof electroacoustic !== "undefined") { %>
+                        <% electroacoustic.forEach(elPiece => { %>
+                            <div class="piece">
+                                <div class="stream">
+                                    <audio src="/stream/<%= elPiece.piece %>" controls="" class="player-audio"></audio>
+                                </div>
+
+                                <div class="piece-info">
+                                    <h2>TITLE: <strong><%= elPiece.title %></strong></h2>
+                                    <h2>PREMIERE: <strong><%= moment(elPiece.premiere).format("D/MM/YYYY") %></strong></h2>
+                                    <h2>DESCRIPTION: <strong><%= elPiece.description%></strong></h2>
+                                </div>
+
+
+                            </div>
+                
+                        <% }); %>
+                    <% } %>
+            
+                </div>
+
+            </div>
+            <div class="section2">
+                <div id="title-section">
+                    <h2>Movie Compositions</h2>
+                </div>
+                <div class="horizontal-line"></div> 
+
+
+                <div id="body-section"> 
+                    <% if(typeof videos !== "undefined") { %>
+                        <% videos.forEach(video => { %>
+                            <div class="piece">
+                                <video width="320" height="240" controls>
+                                    <source src="<%= video.video %>" type="video/mp4" >
+                                    <!-- Your browser does not support the video tag. -->
+                                </video>
+                                <div class="piece-info">
+                                    <br>
+                                    <h2>TITLE: <strong><%= video.title %></strong></h2>
+                                    <h2>PREMIERE: <strong><%= moment(video.premiere).format("D/MM/YYYY") %></strong></h2>
+                                    <h2>DESCRIPTION: <strong><%= video.description%></strong></h2>
+                                </div>
+                                <div class="video">
+
+                                </div>
+                            </div>
+                        <% }); %>
+                    <% } %>
+                </div>
+
+            </div>
+            <div class="section3">
+                <div id="title-section">
+                    <h2>Metal Compositions</h2>
+                </div>
+                
+                <div class="horizontal-line"></div> 
+
+                <div id="body-section">
+                    <% if(typeof pieces !== "undefined") { %>
+                        <% pieces.forEach(piece => { %>
+                            <div class="piece">
+                                <div class="stream">
+                                    <% if (piece.image) { %>
+                                        <img src="<%= piece.image %>" alt="Immagine di <%= piece.title %>" width="200" height="200">
+                                    <% } else { %>
+                                        <img src="../DSC02723.jpg" alt="Immagine di default">
+                                    <% } %>
+                                </div>
+                                <div class="piece-info">
+                                    <h2>TITLE: <strong><%= piece.title %></strong></h2>
+                                    <h2>PREMIERE: <strong><%= moment(piece.premiere).format("D/MM/YYYY") %></strong></h2>
+                                    <h2>DESCRIPTION: <strong><%= piece.description%></strong></h2>
+                                </div>
+                            </div>
+                            <div class="audio-stream">
+                                <% piece.files.forEach(file => { 
+                                    // Estrai il nome del file
+                                    const fullFileName = file.file.split('/').pop();
+                                    // Rimuovi l'identificatore numerico, il trattino e l'estensione del file
+                                    const title = fullFileName.replace(/^\d{10,}-\d{2} - /, '').replace(/\.[^/.]+$/, '');
+                                %>
+                                    <div class="info-song">      
+                                        <p class="title-song"><%= title %></p>
+                                        <audio src="/stream/<%= file.file %>" controls="" class="player-audio"></audio>
+                                    </div>
+                            <% }); %>
+                            </div>
+                
+                        <% }); %>
+                    <% } %>
+            
+                </div>
+
+            </div>
+
+        </div>
+
+        <nav class="footer">
+            <%- include("footer/footer.ejs") %>
+            <p id="latency">Server latency: 0 ms</p>
+            <a class="admin" href="/login">Admin</a>
+
+
+        </nav>
+    </div>
+
+    <!-- <script src="/public/js/color.js"></script> -->
+    <script src="/js/api.js"></script>
+
+
+
+</body>
+</html>

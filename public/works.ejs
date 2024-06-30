@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <div>
+        <% if(typeof pieces !== "undefined") { %>
+            <% pieces.forEach(piece => { %>
+            <div class="piece">
+                <p>TITLE: <strong><%= piece.title %></strong></p>
+                <p>PREMIERE: <strong><%= moment(piece.premiere).format("D/MM/YYYY") %></strong></p>
+                <audio src="stream/>%= piece.file %>" controls=""></audio>
+            </div>
+
+        }) %>
+        } %>
+
+    </div>
+</body>
+</html>

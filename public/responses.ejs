@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="header"> 
+            <p style="background-color: red ";">Admin Page</p>
+
+            <div class="title">
+                <%- include('header/header.ejs') %>
+            </div>
+            <ul class="pagina">
+                <li >
+                    <a href="/" >
+                        <h2 >Home</h1>
+                    </a>
+                </li>
+       
+                <li>
+                    <a href="/upload">
+                        <h2>Uploader</h2>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/response">
+                        <h2>Responses</h2>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="main">
+            <div class="section1">
+                <div id="title-section">
+                    <h2>Showcase</h2>
+                </div>
+                
+                <div class="horizontal-line"></div> 
+
+                <div id="body-section">
+                    <% if(typeof resps !== "undefined") { %>
+                        <% resps.forEach(resp => { %>
+                            <div class="piece">
+                                <div class="responses-info">
+                                    <h2>EMAIL: <strong><%= resp.email %></strong></h2>
+                                    <h2>TITLE: <strong><%= resp.titolo %></strong></h2>
+                                    <h2>DESCRIPTION: <strong><%= resp.testo%></strong></h2>
+                                </div>
+                            </div>
+                        <% }); %>
+                    <% } %>
+                </div>
+
+            </div>
+        </div>
+
+        <nav class="footer">
+            <%- include("footer/footer.ejs") %>
+            <p id="latency">Server latency: 0 ms</p>
+
+        </nav>
+    </div>
+
+    <script src="/js/color.js"></script>
+    <script src="/js/api.js"></script>
+
+</body>
+</html>

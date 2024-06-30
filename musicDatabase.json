@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "title": "Disciplina - Chains of Time",
+      "venue": "Italy, Milano",
+      "premiere": "2023-05-29T00:00:00.000Z",
+      "description": "Four tracks EP released on 8th of May 2023",
+      "image": "uploads/1719170168447-DISCIPLINA ART NEW LOGO .png",
+      "files": [
+        {
+          "file": "uploads/1719170169810-01 - Suicidal Tendencies.wav"
+        },
+        {
+          "file": "uploads/1719170170836-02 - Game of Death.wav"
+        },
+        {
+          "file": "uploads/1719170171989-03 - Living The Past.wav"
+        },
+        {
+          "file": "uploads/1719170174526-04 - My Destiny.wav"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "title": "Space Odissey (2001) - Electronic Composition",
+      "venue": "ddd",
+      "premiere": "2023-10-03T00:00:00.000Z",
+      "description": "Electronic Composition written for Visual Communication exam",
+      "video": "uploads\\1719230597848 - 1_COMPOSITION.mp4"
+    },
+    {
+      "title": "A Clockwork Orange - Electronic Composition",
+      "venue": "Giuseppe Verdi - Conservatory",
+      "premiere": "2023-03-24T00:00:00.000Z",
+      "description": "Electronic Composition written for Visual Communication exam",
+      "video": "uploads\\1719237825139 - 2_COMPOSITION.mp4"
+    },
+    {
+      "title": "Il Sicario - Electronic and Orchestra composition",
+      "venue": "",
+      "premiere": "2024-06-24T00:00:00.000Z",
+      "description": "Electronic and orchestra composition written for Music Applied to Images",
+      "video": "uploads\\1719240746148-Composizione_sicario_Last_Last_Last_Verison.mp4"
+    }
+  ]
+}

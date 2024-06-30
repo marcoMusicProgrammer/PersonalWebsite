@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploads</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="libraries/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
+</head>
+<body>
+    <div class="container"> <!--flex container  -->
+        <nav class="header"> 
+            <p style="background-color: red ";">Admin Page</p>
+            <div class="title">
+                <%- include('header/header.ejs') %>
+            </div>
+
+            <ul class="pagina">
+                <li >
+                    <a href="/" >
+                        <h2 >Home</h1>
+                    </a>
+                </li>
+       
+                <li>
+                    <a href="/upload">
+                        <h2>Uploader</h2>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/response">
+                        <h2>Responses</h2>
+                    </a>
+                </li>
+            
+            </ul>
+        </nav>
+
+        <div class="main-upload">
+            <div class="contact-section">
+                <form action="upload-music" method="post" enctype="multipart/form-data">
+                    <div class="div_items">
+                        <div>
+                            <% var imageErr, titoloErr, venueErr, premiereErr,fileErr, successMusic
+                                if (flash){ 
+                                    flash.forEach(errors => {
+                                        switch (errors.path) {
+                                            case "image":
+                                            imageErr = errors.msg
+                                            break;
+                                            case "musicTitle":
+                                                titoloErr = errors.msg
+                                                break;
+                                            case "musicVenue":
+                                                venueErr = errors.msg
+                                                break;
+                                            case "musicPremiere":
+                                                premiereErr = errors.msg
+                                                break;
+                                            case "file":
+                                                fileErr = errors.msg
+                                                break;
+                                            case "music-success":
+                                                successMusic = errors.msg
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    });
+                                   
+                                } 
+                            %>
+                        </div>
+
+                        <h1 class="title-upload">Music</h1>
+                        <p style="color: green;"><%= successMusic %></p>
+                        
+
+                        <label for="image-id">Image</label>
+                        <input type="file" name="image" id="image-id"><span style="color: red;"><%= imageErr %></span>
+                        <br>
+                        <label for="title-id">Titolo</label>
+                        <input type="text" name="musicTitle" id="title-id"><span style="color: red;"><%= titoloErr %></span>
+                        <br>
+                        <label for="venue-id">Venue</label>
+                        <input type="text" name="musicVenue" id="vanue-id"><span style="color: red;"><%= venueErr %></span>
+                        <br>
+                        <label for="date-id">Premiere</label>
+                        <input type="date" name="musicPremiere" id="date-id"><span style="color: red;"><%= premiereErr %></span>
+                        <br>
+                        <label for="description-id">Descrizione</label>
+                        <textarea name="description" id="description-id" rows="10"></textarea>
+                        <br>
+                        <label id="file-input-label" for="file-id">Select a file</label>
+                        <input type="file" name="file" id="file-id" accept="audio/*" multiple><span style="color: red;"><%= fileErr %></span>
+                        <br>
+                        <button type="submit">Invia!</button>
+                    </div>
+                </form>
+            </div>
+            <div class="contact-section">
+                <form action="upload-video" method="post" enctype="multipart/form-data">
+                    <div class="div_items">
+                        <div>
+                            <% var videoTitoloErr, videoVenueErr, videoPremiereErr,videoErr, movieSuccess
+                                if (flash){ 
+                                    flash.forEach(errors => {
+                                        switch (errors.path) {
+                                            case "movieTitle":
+                                                videoTitoloErr = errors.msg
+                                                break;
+                                            case "movieVenue":
+                                                videoVenueErr = errors.msg
+                                                break;
+                                            case "moviePremiere":
+                                                videoPremiereErr = errors.msg
+                                                break;
+                                            case "video":
+                                                videoErr = errors.msg
+                                                break;
+                                            case "movie-success":
+                                                movieSuccess = errors.msg
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    });
+                                    <!-- console.log(flash) -->
+                                } 
+                            %>
+                        </div>
+
+                        <h1 class="title-upload">Movie</h1>
+                        <p style="color: green;"><%= movieSuccess %></p>
+                        <br>
+                        <br>
+                        <br>
+                        <label for="title-id">Titolo</label>
+                        <input type="text" name="movieTitle" id="title-id"><span style="color: red;"><%= videoTitoloErr %></span>
+                        <br>
+                        <label for="venue-id">Venue</label>
+                        <input type="text" name="movieVenue" id="vanue-id"><span style="color: red;"><%= videoVenueErr %></span>
+                        <br>
+                        <label for="date-id">Premiere</label>
+                        <input type="date" name="moviePremiere" id="date-id"><span style="color: red;"><%= videoPremiereErr %></span>
+                        <br>
+                        <label for="description-id">Descrizione</label>
+                        <textarea name="description" id="description-id" rows="10"></textarea>
+                        <br>
+                        <label id="file-input-label" for="video-id">Select a file</label>
+                        <input type="file" name="video" id="video-id" accept="video/*"><span style="color: red;"><%= videoErr %></span>
+                        <br>
+                        <button type="submit">Invia!</button>
+                    </div>
+                </form>
+            </div>
+            <div class="contact-section">
+                <form action="upload-electroacoustic" method="post" enctype="multipart/form-data">
+                    <div class="div_items">
+                        <div>
+                            <% var electroacousticTitoloErr,electroacousticVenueErr,electroacousticPremiereErr,electroacousticErr, electroacousticSuccess
+                                if (flash){ 
+                                    flash.forEach(errors => {
+                                        switch (errors.path) {
+                                            case "elTitle":
+                                                electroacousticTitoloErr = errors.msg
+                                                break;
+                                            case "elVenue":
+                                                electroacousticVenueErr = errors.msg
+                                                break;
+                                            case "elPremiere":
+                                                electroacousticPremiereErr = errors.msg
+                                                break;
+                                            case "video":
+                                                electroacousticErr = errors.msg
+                                                break;
+                                            case "el-success":
+                                                electroacousticSuccess = errors.msg
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    });
+                                    <!-- console.log(flash) -->
+                                } 
+                            %>
+                        </div>
+
+                        <h1 class="title-upload">Electroacoustic Music</h1>
+                        <p style="color: green;"><%= electroacousticSuccess %></p>
+                        <br>
+
+                        <label for="title-id">Titolo</label>
+                        <input type="text" name="elTitle" id="title-id"><span style="color: red;"><%= electroacousticTitoloErr %></span>
+                        <br>
+                        <label for="venue-id">Venue</label>
+                        <input type="text" name="elVenue" id="vanue-id"><span style="color: red;"><%= electroacousticVenueErr %></span>
+                        <br>
+                        <label for="date-id">Premiere</label>
+                        <input type="date" name="elPremiere" id="date-id"><span style="color: red;"><%= electroacousticPremiereErr %></span>
+                        <br>
+                        <label for="description-id">Descrizione</label>
+                        <textarea name="description" id="description-id" rows="10"></textarea>
+                        <br>
+                        <label id="file-input-label" for="electroacoustic-id">Select a file</label>
+                        <input type="file" name="electroacoustic-piece" id="electroacoustic-id" accept="audio/*"><span style="color: red;"><%= electroacousticErr %></span>
+                        <br>
+                        <button type="submit">Invia!</button>
+                    </div>
+                </form>
+            </div>
+            <div class="contact-section">
+                <form action="upload-portfolio" method="post" enctype="multipart/form-data">
+                    <div class="div_items">
+                        <div>
+                            <% var portfolioIdErr,portfolioTitoloErr,portfolioErr,portfolioSuccess
+                                if (flash){ 
+                                    flash.forEach(errors => {
+                                        switch (errors.path) {
+                                            case "portfolioId":
+                                                portfolioIdErr = errors.msg
+                                                break;
+                                            case "portfolioTitle":
+                                                portfolioTitoloErr = errors.msg
+                                                break;
+                                            case "portfolio":
+                                                portfolioErr = errors.msg
+                                                break;
+                                            case "portfolio-success":
+                                                portfolioSuccess = errors.msg
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    });
+                                    <!-- console.log(flash) -->
+                                } 
+                            %>
+                        </div>
+
+                        <h1 class="title-upload">Portoflio</h1>
+                        <p style="color: green;"><%= portfolioSuccess %></p>
+                        <br>
+                        <br>
+                        <br>
+                        <label for="id-id">ID</label>
+                        <input type="number" name="portfolioId" id="id-id"><span style="color: red;"><%= portfolioIdErr %></span>
+                        <br>
+                        <label for="title-id">Titolo</label>
+                        <input type="text" name="portfolioTitle" id="title-id"><span style="color: red;"><%= portfolioTitoloErr %></span>
+                        <br>
+                        <label for="description-id">Descrizione</label>
+                        <textarea name="description" id="description-id" rows="10"></textarea>
+                        <br>
+                        <label id="file-input-label" for="port-id">Select a file</label>
+                        <input type="file" name="portfolio" id="port-id" accept=".rar"><span style="color: red;"><%= portfolioErr %></span>
+                        <br>
+                        <button type="submit">Invia!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <nav class="footer">
+            <%- include("footer/footer.ejs") %>
+            <p id="latency">Server latency: 0 ms</p>
+        </nav>
+    </div>
+</body>
+</html>
