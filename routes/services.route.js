@@ -30,7 +30,7 @@ router.get("/stream/uploads/:audiofile", (req,res)=>{
         "Content-Range": `bytes ${start}-${end}/${fileSize}`,
         "Accept-Ranges": "bytes",
         "Content-Lenght": contentLength,
-        "Content-Type": "audio/raw"
+        "Content-Type": "audio/mp3"
     }
 
     res.writeHead(206, headers)
