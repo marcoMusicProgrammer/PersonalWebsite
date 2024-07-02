@@ -3,7 +3,7 @@ const moment = require("moment")
 const { getYear } = require("../utilities")
 const database = require ("../database.json")
 const {body,validationResult} = require("express-validator")
-const { form_validators, upload_validators } = require("../middleware/validator")
+const { form_validators } = require("../middleware/validator")
 const { writeDataBase } = require("../utilities")
 
 
@@ -20,12 +20,14 @@ router.get("/contacts",(req,res)=>{
 })
 
 router.post("/contacts",form_validators,(req,res)=>{
-
     const errori = validationResult(req)
+
     if(errori.errors.length > 0){
         req.session.flash = errori.errors
         console.log(req.body)
         console.log("errore")
+        res.redirect("/contacts")
+
     }
 
     const entry = {
