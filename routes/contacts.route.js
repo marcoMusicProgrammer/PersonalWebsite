@@ -26,7 +26,8 @@ router.post("/contacts",form_validators,(req,res)=>{
         req.session.flash = errori.errors
         // console.log(req.body)
         // console.log("errore")
-        res.redirect("/contacts")
+        console.log(errori.errors)
+        return res.redirect("/contacts")
 
     }
 
