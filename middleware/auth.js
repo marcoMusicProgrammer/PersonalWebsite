@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt')
 const { validationResult } = require("express-validator")
 
 // var adminPasswordHash = '$2b$10$AzUbIlxkWezOBek3TCiMNOYm5F8jCQSU4Z..e1CefwQyxMwry3blq';
-const adminPasswordHash = require("../credenziali.json")
+const adminPasswordHash = require("../databases/credenziali.json")
 
 // const someOtherPlaintextPassword = 'not_bacon';
 // const saltRounds = 10; // Il numero di salt da applicare

@@ -1,8 +1,8 @@
 const { validationResult } = require("express-validator")
-const musicDatabase = require ("../musicDatabase.json")
-const videoDatabase = require ("../videoDatabase.json")
-const electroacousticDatabase = require ("../electroacousticDatabase.json")
-const portfolioDatabase = require ("../portfolioDatabase.json")
+const musicDatabase = require ("../databases/musicDatabase.json")
+const videoDatabase = require ("../databases/videoDatabase.json")
+const electroacousticDatabase = require ("../databases/electroacousticDatabase.json")
+const portfolioDatabase = require ("../databases/portfolioDatabase.json")
 const { writeMusicDataBase,writeVideoDataBase,writeElectroacousticDataBase,writePortfolioDataBase } = require("../utilities")
 
 
