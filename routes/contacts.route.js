@@ -39,7 +39,7 @@ router.post("/contacts",form_validators,(req,res)=>{
 
 
     database.data.push(entry)
-    writeDataBase()
+    // writeDataBase()
 
 
     req.session.flash = [{path:"success",msg:"Messaggio inviato"}]
