@@ -5,7 +5,7 @@ const express = require("express")
 const app = express() //Inizializza l'applicazione
 
 const bodyParser  = require("body-parser")
-const session = require("cookie-session")
+const session = require("express-session")
 const flashMiddleWare = require("./middleware/flash.js")
 
 const path = require("path")
@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(session({
     secret: "prova",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {
         sameSite: "strict"
     }
@@ -47,6 +47,7 @@ const contactRoutes = require ("./routes/contacts.route.js")
 const servicesRouter = require("./routes/services.route.js")
 const worksRouter = require("./routes/works.route.js")
 const loginRouter = require("./routes/auth.route.js")
+const { Cookie } = require("express-session")
 
 
 app.use(staticRoutes)
