@@ -5,7 +5,7 @@ const express = require("express")
 const app = express() //Inizializza l'applicazione
 
 const bodyParser  = require("body-parser")
-const session = require("express-session")
+const session = require("cookie-session")
 const flashMiddleWare = require("./middleware/flash.js")
 
 const path = require("path")
@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(session({
     secret: "prova",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         sameSite: "strict"
     }
