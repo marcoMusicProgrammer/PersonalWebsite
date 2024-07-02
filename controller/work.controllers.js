@@ -54,7 +54,7 @@ const workCreateMusic = (req,res)=>{
     console.log(req.files.file.length)
 
     musicDatabase.data.push(entry)
-    writeMusicDataBase()
+    // writeMusicDataBase()
 
 	req.session.flash = [{path: "music-success", msg: "Upload succeded"}]
 
@@ -85,7 +85,7 @@ const workCreateVideo = (req,res)=>{
     }
 
     videoDatabase.data.push(entryVideo)
-    writeVideoDataBase()
+    // writeVideoDataBase()
 
 	req.session.flash = [{path: "movie-success", msg: "Upload succeded"}]
 
@@ -117,7 +117,7 @@ const workCreateElectroacoustic = (req,res)=>{
 
 
     electroacousticDatabase.data.push(entryVideo)
-    writeElectroacousticDataBase()
+    // writeElectroacousticDataBase()
 
 	req.session.flash = [{path: "el-success", msg: "Upload succeded"}]
 
@@ -148,7 +148,7 @@ const workCreatePortfolio = (req,res)=>{
     }
 
     portfolioDatabase.data.push(entryVideo)
-    writePortfolioDataBase()
+    // writePortfolioDataBase()
 
 	req.session.flash = [{path: "portfolio-success", msg: "Upload succeded"}]
 
