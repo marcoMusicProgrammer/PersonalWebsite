@@ -1,46 +1,5 @@
 {
   "data": [
-    {
-      "id": 1,
-      "title": "Bee Buzzing - Sound Design on SuperCollider",
-      "description": "Bee sound design written on supercollider",
-      "work": "uploads\/1719331880735-BEE_BUZZING.rar"
-    },
-    {
-      "id": "2",
-      "title": "Dodecaphonic script in Max MSP",
-      "description": "Dodecaphonic script in Max MSP for string quartet using kontakts library",
-      "work": "uploads\/1719346622819-DODECAFONIA-MAXMSP.rar"
-    },
-    {
-      "id": "3",
-      "title": "Steps Visual Design",
-      "description": "Steps Visual Design with Touch Designer and Supercollider for Systems and Multimedia",
-      "work": "uploads\/1719346933913-STEPS_TDESIGNER.rar"
-    },
-    {
-      "id": "4",
-      "title": "Videogame for console and audio engine",
-      "description": "Videogame for console written in C++ with audio engine developed in pure data.",
-      "work": "uploads\/1719347038951-GAMEonCONSOLE.rar"
-    },
-    {
-      "id": "5",
-      "title": "Sound Design for live electronics",
-      "description": "Sound Design for live electronics written in Super Collider",
-      "work": "uploads\/1719347148786-LIVE-ELECTRONICS.rar"
-    },
-    {
-      "id": "6",
-      "title": "AI Alogrythms in Max MSP",
-      "description": "AI Alogrythms in Max MSP using FluCoMa tools",
-      "work": "uploads\/1719347408641-IA-ALGORYTHMS.rar"
-    },
-    {
-      "id": "7",
-      "title": "Web App Sequencer",
-      "description": "Web App Sequencer written in Javascript",
-      "work": "uploads\/1719347458991-SEQUENCER.rar"
-    }
+
   ]
 }
