@@ -11,10 +11,10 @@ router.get("/contacts",(req,res)=>{
 
     console.log("Richiesta /contacts")
 
-    var err = ''
-    if(req.query.err){
-        err = "Manca l'oggetto"
-    }
+    // var err = ''
+    // if(req.query.err){
+    //     err = "Manca l'oggetto"
+    // }
     res.render("../public/contact.ejs",{Titolo:"Contact",anno: getYear(),errore:err,pieces:database.data, moment:moment})
 
 })
@@ -24,8 +24,8 @@ router.post("/contacts",form_validators,(req,res)=>{
 
     if(errori.errors.length > 0){
         req.session.flash = errori.errors
-        console.log(req.body)
-        console.log("errore")
+        // console.log(req.body)
+        // console.log("errore")
         res.redirect("/contacts")
 
     }
@@ -37,17 +37,11 @@ router.post("/contacts",form_validators,(req,res)=>{
     }
 
 
-    try{
-        database.data.push(entry)
-        writeDataBase()
-    }
-    catch (err) {
-        console.log(err)
-    }
+    database.data.push(entry)
+    writeDataBase()
 
 
     req.session.flash = [{path:"success",msg:"Messaggio inviato"}]
-    
     res.redirect("/contacts")
 })
 
