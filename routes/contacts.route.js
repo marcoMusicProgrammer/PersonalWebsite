@@ -15,7 +15,7 @@ router.get("/contacts",(req,res)=>{
     // if(req.query.err){
     //     err = "Manca l'oggetto"
     // }
-    res.render("../public/contact.ejs",{Titolo:"Contact",anno: getYear(),errore:err,pieces:database.data, moment:moment})
+    res.render("../public/contact.ejs",{Titolo:"Contact",anno: getYear()})
 
 })
 
