@@ -15,7 +15,7 @@ router.get("/stream/uploads/:audiofile", (req,res)=>{
     }
     
     const filename = req.params.audiofile
-    const audioPath = path.join("./uploads",filename)
+    const audioPath = path.join("../../../../../data",filename)
     console.log(audioPath)
     const fileSize = statSync(audioPath).size
     const mimeType = mime.lookup(audioPath)
@@ -54,7 +54,7 @@ router.get("/stream/uploads/:videofile", (req, res) => {
     }
 
     const filename = req.params.videofile;
-    const videoPath = path.join("./uploads", filename);
+    const videoPath = path.join("../../../../../data", filename);
 
     // Controlla se il file esste
     if (!fs.existsSync(videoPath)) {
