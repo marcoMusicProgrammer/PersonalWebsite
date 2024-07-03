@@ -3,6 +3,7 @@
 const http = require ("http") 
 const express = require("express") 
 const app = express() //Inizializza l'applicazione
+const fs = require("fs")
 
 const bodyParser  = require("body-parser")
 const session = require("cookie-session")
