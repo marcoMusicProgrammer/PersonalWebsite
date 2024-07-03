@@ -29,7 +29,7 @@ const uploadPath = path.join(dataPath, 'uploads');
 const dbFilePath = path.join(dataPath, 'database.json');
 
 if (!fs.existsSync(dbFilePath)) {
-    fs.writeFileSync(dbFilePath, JSON.stringify([]));
+    fs.writeFileSync(dbFilePath, JSON.stringify({ data: [] }, null, 2));
 }
 
 app.use(express.static(__dirname+"/public"))
