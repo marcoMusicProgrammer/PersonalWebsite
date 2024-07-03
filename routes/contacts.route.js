@@ -1,7 +1,7 @@
 const router = require("express").Router()
 const moment = require("moment")
 const { getYear } = require("../utilities")
-const database = require ("../../../../../database.json")
+const database = require ("../../../../../data/database.json")
 const {body,validationResult} = require("express-validator")
 const { form_validators } = require("../middleware/validator")
 const { writeDataBase } = require("../utilities")
