@@ -5,7 +5,7 @@ const express = require("express")
 const app = express() //Inizializza l'applicazione
 
 const bodyParser  = require("body-parser")
-const session = require("express-session")
+const session = require("cookie-session")
 const flashMiddleWare = require("./middleware/flash.js")
 
 const path = require("path")
