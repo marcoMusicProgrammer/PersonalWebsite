@@ -17,11 +17,19 @@ const server = http.createServer(app)
 const PORT = process.env.PORT || 10002
 
 
-const wsServer = new ws.Server({server})
+// const wsServer = new ws.Server({server})
 
-wsServer.on("connection", (socket)=>{
-    console.log("A new user connected")
-})
+// wsServer.on("connection", (socket)=>{
+//     console.log("A new user connected")
+// })
+
+const dataPath = path.resolve(__dirname, '../../../../../../data'); // Adjust this path as needed
+const uploadPath = path.join(dataPath, 'uploads');
+const dbFilePath = path.join(dataPath, 'database.json');
+
+if (!fs.existsSync(dbFilePath)) {
+    fs.writeFileSync(dbFilePath, JSON.stringify([]));
+}
 
 app.use(express.static(__dirname+"/public"))
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
