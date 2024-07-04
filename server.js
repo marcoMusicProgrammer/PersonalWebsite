@@ -25,11 +25,27 @@ const PORT = process.env.PORT || 10002
 // })
 
 const dataPath = path.resolve(__dirname, '../../../../../../data'); // Adjust this path as needed
-const uploadPath = path.join(dataPath, 'uploads');
-const dbFilePath = path.join(dataPath, 'database.json');
+const databaseContact = path.join(dataPath, 'database.json');
+const databaseMusic = path.join(dataPath, 'musicDatabase.json');
+const databaseElectroacoustic = path.join(dataPath, 'electroacousticDtabase.json');
+const databaseMovie = path.join(dataPath, 'movieDatabase.json');
+const databasePortfolio = path.join(dataPath, 'portfolioDatabase.json');
 
-if (!fs.existsSync(dbFilePath)) {
-    fs.writeFileSync(dbFilePath, JSON.stringify({ data: [] }, null, 2));
+
+if (!fs.existsSync(databaseContact)) {
+    fs.writeFileSync(databaseContact, JSON.stringify({ data: [] }, null, 2));
+}
+if (!fs.existsSync(databaseMusic)) {
+    fs.writeFileSync(databaseMusic, JSON.stringify({ data: [] }, null, 2));
+}
+if (!fs.existsSync(databaseElectroacoustic)) {
+    fs.writeFileSync(databaseElectroacoustic, JSON.stringify({ data: [] }, null, 2));
+}
+if (!fs.existsSync(databaseMovie)) {
+    fs.writeFileSync(databaseMovie, JSON.stringify({ data: [] }, null, 2));
+}
+if (!fs.existsSync(databasePortfolio)) {
+    fs.writeFileSync(databasePortfolio, JSON.stringify({ data: [] }, null, 2));
 }
 
 app.use(express.static(__dirname+"/public"))

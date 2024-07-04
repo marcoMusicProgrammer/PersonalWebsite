@@ -1,9 +1,9 @@
 const { writeFileSync }  = require("fs")
 const database = require("../../../../../data/database.json")
-const musicDatabase = require("./databases/musicDatabase.json")
-const videoDatabase = require("./databases/videoDatabase.json")
-const electroacousticDatabase = require("./databases/electroacousticDatabase.json")
-const portfolioDatabase = require("./databases/portfolioDatabase.json")
+const musicDatabase = require("../../../../../data/musicDatabase.json")
+const videoDatabase = require("../../../../../data/videoDatabase.json")
+const electroacousticDatabase = require("../../../../../data/electroacousticDatabase.json")
+const portfolioDatabase = require("../../../../../data/portfolioDatabase.json")
 
 
 
@@ -23,19 +23,41 @@ function writeDataBase(){
 }
 
 function writeMusicDataBase(){
-    writeFileSync("./musicDatabase.json", JSON.stringify(musicDatabase,null,2))
+    try{
+        writeFileSync("../../../../../data/musicDatabase.json", JSON.stringify(musicDatabase,null,2))
+        console.log("database scritto correttamente")
+    } catch (err) {
+        console.error("Errore nella scrittura del database:", err)
+    }
+    
 }
 
 function writeVideoDataBase(){
-    writeFileSync("./videoDatabase.json", JSON.stringify(videoDatabase,null,2))
+    try{
+        writeFileSync("../../../../../data/videoDatabase.json", JSON.stringify(videoDatabase,null,2))
+        console.log("database scritto correttamente")
+    } catch (err) {
+        console.error("Errore nella scrittura del database:", err)
+    }
+
 }
 
 function writeElectroacousticDataBase(){
-    writeFileSync("./electroacousticDatabase.json", JSON.stringify(electroacousticDatabase,null,2))
+    try{
+        writeFileSync("../../../../../data/electroacousticDatabase.json", JSON.stringify(electroacousticDatabase,null,2))
+        console.log("database scritto correttamente")
+    } catch (err) {
+        console.error("Errore nella scrittura del database:", err)
+    }
 }
 
 function writePortfolioDataBase(){
-    writeFileSync("./portfolioDatabase.json", JSON.stringify(portfolioDatabase,null,2))
+    try{
+        writeFileSync("../../../../../data/portfolioDatabase.json", JSON.stringify(portfolioDatabase,null,2))
+        console.log("database scritto correttamente")
+    } catch (err) {
+        console.error("Errore nella scrittura del database:", err)
+    }
 }
 
 

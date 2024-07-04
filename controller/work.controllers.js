@@ -1,8 +1,8 @@
 const { validationResult } = require("express-validator")
-const musicDatabase = require ("../databases/musicDatabase.json")
-const videoDatabase = require ("../databases/videoDatabase.json")
-const electroacousticDatabase = require ("../databases/electroacousticDatabase.json")
-const portfolioDatabase = require ("../databases/portfolioDatabase.json")
+const musicDatabase = require("../../../../../data/musicDatabase.json")
+const videoDatabase = require("../../../../../data/videoDatabase.json")
+const electroacousticDatabase = require("../../../../../data/electroacousticDatabase.json")
+const portfolioDatabase = require("../../../../../data/portfolioDatabase.json")
 const { writeMusicDataBase,writeVideoDataBase,writeElectroacousticDataBase,writePortfolioDataBase } = require("../utilities")
 
 
@@ -54,7 +54,7 @@ const workCreateMusic = (req,res)=>{
     console.log(req.files.file.length)
 
     musicDatabase.data.push(entry)
-    // writeMusicDataBase()
+    writeMusicDataBase()
 
 	req.session.flash = [{path: "music-success", msg: "Upload succeded"}]
 
@@ -85,7 +85,7 @@ const workCreateVideo = (req,res)=>{
     }
 
     videoDatabase.data.push(entryVideo)
-    // writeVideoDataBase()
+    writeVideoDataBase()
 
 	req.session.flash = [{path: "movie-success", msg: "Upload succeded"}]
 
@@ -117,7 +117,7 @@ const workCreateElectroacoustic = (req,res)=>{
 
 
     electroacousticDatabase.data.push(entryVideo)
-    // writeElectroacousticDataBase()
+    writeElectroacousticDataBase()
 
 	req.session.flash = [{path: "el-success", msg: "Upload succeded"}]
 
@@ -148,7 +148,7 @@ const workCreatePortfolio = (req,res)=>{
     }
 
     portfolioDatabase.data.push(entryVideo)
-    // writePortfolioDataBase()
+    writePortfolioDataBase()
 
 	req.session.flash = [{path: "portfolio-success", msg: "Upload succeded"}]
 

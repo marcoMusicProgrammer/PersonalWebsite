@@ -2,7 +2,7 @@ const router = require("express").Router()
 const path = require("path")
 const mime = require("mime-types")
 const { statSync,createReadStream } = require("fs")
-const portfolioDatabase = require("../databases/portfolioDatabase.json")
+const portfolioDatabase = require("../../../../../data/portfolioDatabase.json")
 
 
 router.get("/stream/uploads/:audiofile", (req,res)=>{
