@@ -15,7 +15,8 @@ function getYear(){
 
 function writeDataBase(){
     try{
-        writeFileSync("./database.json", JSON.stringify(database,null,2))
+        writeFileSync("../../../../../data/database.json", JSON.stringify(database,null,2))
+        console.log("database scritto correttamente")
     } catch (err) {
         console.error("Errore nella scrittura del database:", err)
     }
