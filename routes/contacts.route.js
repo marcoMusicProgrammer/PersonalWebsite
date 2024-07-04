@@ -37,6 +37,8 @@ router.post("/contacts",form_validators,(req,res)=>{
         testo: req.body.testo,
     }
 
+    console.log(entry)
+
     database.data.push(entry)
     writeDataBase()
 

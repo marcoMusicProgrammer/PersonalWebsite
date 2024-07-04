@@ -14,7 +14,11 @@ function getYear(){
 }
 
 function writeDataBase(){
-    writeFileSync("./database.json", JSON.stringify(database,null,2))
+    try{
+        writeFileSync("./database.json", JSON.stringify(database,null,2))
+    } catch (err) {
+        console.error("Errore nella scrittura del database:", err)
+    }
 }
 
 function writeMusicDataBase(){
