@@ -1,10 +1,10 @@
 const {getYear} = require("../utilities")
 const router = require("express").Router()
 const database = require("../../../../../data/database.json")
-const musicDatabase = require ("../databases/musicDatabase.json")
-const videoDatabase = require ("../databases/movieDatabase.json")
-const electroacousticDatabase = require ("../databases/electroacousticDatabase.json")
-const portfolioDatabase = require ("../databases/portfolioDatabase.json")
+const musicDatabase = require("../../../../../data/musicDatabase.json")
+const videoDatabase = require("../../../../../data/movieDatabase.json")
+const electroacousticDatabase = require("../../../../../data/electroacousticDatabase.json")
+const portfolioDatabase = require("../../../../../data/portfolioDatabase.json")
 
 
 
