@@ -33,7 +33,7 @@ if (!fs.existsSync(dbFilePath)) {
 }
 
 app.use(express.static(__dirname+"/public"))
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/data', express.static(path.join(__dirname, 'data')));
 app.set("view engine","ejs")
 app.use("/api",cors())
 
@@ -56,7 +56,6 @@ const contactRoutes = require ("./routes/contacts.route.js")
 const servicesRouter = require("./routes/services.route.js")
 const worksRouter = require("./routes/works.route.js")
 const loginRouter = require("./routes/auth.route.js")
-const { Cookie } = require("express-session")
 
 
 app.use(staticRoutes)
