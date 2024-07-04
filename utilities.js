@@ -1,7 +1,7 @@
 const { writeFileSync }  = require("fs")
 const database = require("../../../../../data/database.json")
 const musicDatabase = require("../../../../../data/musicDatabase.json")
-const videoDatabase = require("../../../../../data/videoDatabase.json")
+const videoDatabase = require("../../../../../data/movieDatabase.json")
 const electroacousticDatabase = require("../../../../../data/electroacousticDatabase.json")
 const portfolioDatabase = require("../../../../../data/portfolioDatabase.json")
 
