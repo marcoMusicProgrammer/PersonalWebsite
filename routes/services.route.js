@@ -7,7 +7,7 @@ const portfolioDatabase = require("../../../../../../data/portfolioDatabase.json
 
 const requestProcessing = new Set();
 
-router.get("/stream/uploads/:audiofile", (req,res)=>{
+router.get("/stream/data/:audiofile", (req,res)=>{
   const range = req.headers.range
 
   if(!range){
@@ -42,7 +42,7 @@ router.get("/stream/uploads/:audiofile", (req,res)=>{
   })
 })
 
-router.get("/stream/uploads/:videofile", (req, res) => {
+router.get("/stream/data/:videofile", (req, res) => {
     const range = req.headers.range;
 
     if (!range) {
@@ -50,7 +50,7 @@ router.get("/stream/uploads/:videofile", (req, res) => {
     }
 
     const filename = req.params.videofile;
-    const videoPath = path.join("./uploads", filename);
+    const videoPath = path.join("../../../../../data", filename);
 
     // Controlla se il file esste
     if (!fs.existsSync(videoPath)) {

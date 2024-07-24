@@ -21,7 +21,7 @@ const PORT = process.env.PORT || 10002
 //     console.log("A new user connected")
 // })
 
-const dataPath = path.resolve(__dirname, '../../../../../../data'); // Adjust this path as needed
+const dataPath = path.resolve(__dirname, '../../../../../data'); // Adjust this path as needed
 const databaseContact = path.join(dataPath, 'database.json');
 const databaseMusic = path.join(dataPath, 'musicDatabase.json');
 const databaseElectroacoustic = path.join(dataPath, 'electroacousticDatabase.json');
@@ -46,7 +46,7 @@ if (!fs.existsSync(databasePortfolio)) {
 
 app.use(express.static(__dirname+"/public"))
 app.use(express.json())
-app.use('/uploads', express.static(path.join(__dirname, '../../../../../data')));
+app.use('/data', express.static(path.join(__dirname, '../../../../../data')));
 app.set("view engine","ejs")
 app.use("/api",cors())
 
