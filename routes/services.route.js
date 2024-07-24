@@ -7,8 +7,6 @@ const portfolioDatabase = require("../../../../../../data/portfolioDatabase.json
 
 const requestProcessing = new Set();
 
-
-
 router.get("/stream/uploads/:audiofile", (req,res)=>{
   const range = req.headers.range
 
@@ -17,7 +15,7 @@ router.get("/stream/uploads/:audiofile", (req,res)=>{
   }
   
   const filename = req.params.audiofile
-  const audioPath = path.join("./uploads",filename)
+  const audioPath = path.join("../../../../../data",filename)
   const fileSize = statSync(audioPath).size
   const mimeType = mime.lookup(audioPath)
   
