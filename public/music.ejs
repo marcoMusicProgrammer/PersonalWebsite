@@ -118,9 +118,9 @@
                                     <% } %>
                                 </div>
                                 <div class="piece-info">
-                                    <h2 class="titolo"><strong><%= piece.title %></strong></h2>
-                                    <h2 class="data"><strong><%= moment(piece.premiere).format("D/MM/YYYY") %></strong></h2>
-                                    <h2 class="descrizione"><strong><%= piece.description%></strong></h2>
+                                    <h3 class="titolo"><strong><%= piece.title %></strong></h3>
+                                    <h3 class="data"><strong><%= moment(piece.premiere).format("D/MM/YYYY") %></strong></h2>
+                                    <p class="descrizione"><strong><%= piece.description%></strong></p>
                                 </div>
                             </div>
                             <div class="audio-stream">
@@ -132,7 +132,7 @@
                                 %>
                                     <div class="info-song">      
                                         <p class="title-song"><%= title %></p>
-                                        <audio src="/stream/<%= file.file %>" controls="" class="player-audio"></audio>
+                                        <audio src="<%= file.file %>" controls="" class="player-audio"></audio>
                                     </div>
                             <% }); %>
                             </div>

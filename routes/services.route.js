@@ -8,7 +8,7 @@ const portfolioDatabase = require("../../../../../../data/portfolioDatabase.json
 const requestProcessing = new Set();
 const destinationPath = path.resolve(__dirname, '../../../../../../data');
 
-router.get("/stream/uploads/:audiofile", (req,res)=>{
+router.get("/uploads/:audiofile", (req,res)=>{
   const range = req.headers.range
 
   if(!range){
@@ -43,7 +43,7 @@ router.get("/stream/uploads/:audiofile", (req,res)=>{
   })
 })
 
-router.get("/stream/uploads/:videofile", (req, res) => {
+router.get("/uploads/:videofile", (req, res) => {
     const range = req.headers.range;
 
     if (!range) {
