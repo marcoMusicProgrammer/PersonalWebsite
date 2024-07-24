@@ -2,93 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
     <div class="container"> <!-- container  -->
-        <nav class="header"> 
-            <div class="title">
+        <div class="header" id="header"> 
+            <div class="title" id="title">
                 <%- include('header/header.ejs') %>
             </div>
+            <div >
                 <ul class="pagina">
-                    <li id="li">
+                    <li>
                         <a href="/" >
-                            <h2>Home</h1>
+                            <h2>Home</h2>
                         </a>
                     </li>
-        
-                    <li id="li">
+                    <li>
                         <a href="/music">
                             <h2>Music</h2>
                         </a>
                     </li>
-
                     <li>
                         <a href="/portfolio">
                             <h2>Portfolio</h2>
                         </a>
                     </li>
-
                     <li>
                         <a href="/contacts">
                             <h2>Contact</h2>
                         </a>
                     </li>
                 </ul>
-        </nav>
+            </div>
+        </div>
 
         <div class="main">
             <div class="section1">
-                <div id="title-section">
-                    <h1>Biography</h3>
+                <div class="title-section">
+                    <h1>Biography</h1>
                 </div>
-                <div id="body-section">
-                    <p>Marco was born in 1995 in Milan, Italy. He started playing guitar at 14 years old. He begun his professional studies at 20 years old studying Electric Guitar at NAM in Milan and
+                <div class="body-section">
+                    <p>Marco was born in 1995 in Milan, Italy. He started playing guitar at 14 years old. He began his professional studies at 20 years old studying Electric Guitar at NAM in Milan and
                         he graduated in 2020. 
                         In 2016 Marco started his own band "Disciplina" opening for many great names in the metal field.
                         Disciplina released their first EP "Chains of Time" in 2023.                    </p>
                     <p>
-                        In 2021 Marco decided to widen his music knowledge beginning new studies in Muisc Applied at Giuseppe Verdi Conservatory in Milan.
-                        Here, he dives into new field such as audio synthesis, Music for film and programming.
+                        In 2021 Marco decided to widen his music knowledge beginning new studies in Music Applied at Giuseppe Verdi Conservatory in Milan.
+                        Here, he dives into new fields such as audio synthesis, Music for film, and programming.
                     </p>
-                    
                     <p>
                         Marco is an enthusiastic programmer with advanced skills in Music Information Technology.
                         His educational background has enabled him to undertake machine learning projects in the music field,
-                        utilizing sinthesys programs such as SuperCollider and Max MSP, along with programming languages like Python, C, and JavaScript.
-                        Actually seeking opportunities that enable the fusion of creativity and technology.</p>
+                        utilizing synthesis programs such as SuperCollider and Max MSP, along with programming languages like Python, C, and JavaScript.
+                        Currently seeking opportunities that enable the fusion of creativity and technology.</p>
                 </div>
-
             </div>
-
-
         </div>
-
-
 
         <div class="widget">
-            <button id="button-zoom-1" class="button-zoom" type="button">+</button>
-            <button id="button-zoom-2" class="button-zoom" type="button">-</button>
+
         </div>
 
-        <nav class="footer">
-            <%- include("footer/footer.ejs") %>
-            <p id="latency">Server latency: 0 ms</p>
-            <a class="admin" href="/login">Admin</a>
-
-
+        <nav class="footer" id="footer">
+            <div class="foot-1">
+                <label class="ios-switch form-switch" for="switch">
+                    <input type="checkbox" id="switch" name="switch">
+                    <i></i>
+                </label>
+                <p id="mode-text">Light Mode</p>
+            </div>
+            <div class="foot-2">
+                <%- include("footer/footer.ejs") %>
+            </div>
+            <div class="admin-credits">
+                <!-- <p id="latency">Server latency: 0 ms</p> -->
+                <a class="admin" href="/login">Admin</a>
+            </div>
         </nav>
     </div>
 
     <!-- <script src="/js/sketch.js"> </script> -->
-     <script src="/js/api.js"></script>
-    <script src="/js/color.js"></script>
-    <script src="/js/home.js""></script>
-    <script src="libraries/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
-
+    <!-- <script src="/js/api.js"></script> -->
+    <script src="/js/darkMode.js"></script>
+    <script src="/js/size.js"></script>
 </body>
 </html>

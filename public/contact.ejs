@@ -9,56 +9,45 @@
 </head>
 
 <body>
-    <div class="container">
-        <nav class="header"> 
-            
-            <div class="title">
+    <div class="container-contact">
+        <nav class="header" id="header"> 
+            <div class="title" id="title">
                 <%- include('header/header.ejs') %>
             </div>
-
             <ul class="pagina">
                 <li >
                     <a href="/" >
                         <h2 >Home</h1>
                     </a>
                 </li>
-             
-                <li>
-                    <a href="/bio">
-                        <h2>Bio</h2>
-                    </a>
-                </li>
-       
                 <li>
                     <a href="/music">
                         <h2>Music</h2>
                     </a>
                 </li>
-
                 <li>
                     <a href="/portfolio">
-                        <h2>Portofolio</h2>
+                        <h2>Portfolio</h2>
                     </a>
                 </li>
-
                 <li>
                     <a href="/contacts">
                         <h2>Contact</h2>
                     </a>
                 </li>
-            
             </ul>
         </nav>
 
-
         <div class="main">
-
+            <div class="contact-speech">
+                <p>Marco is looking for work opportunities and collaborations, feel free to contact me using the contact form below.</p>
+            </div>
             <div class="contact-section">
                 <!-- <div id="body-section1"> -->
                     <form action="/contacts" method="post">
-                        <div class="div_items-contact">
+                        <div class="div_items-contact" id="div_items-contact">
                             <div>
-                                <% var testoErr, emailErr, titleErr, success
+                                <% var testoErr, emailErr, titleErr, success, emailErrSend
                                     if (flash){ 
                                         flash.forEach(errori => {
                                             switch (errori.path) {
@@ -74,6 +63,9 @@
                                                 case "success":
                                                     success = errori.msg
                                                     break;
+                                                case "mailErrSend":
+                                                    emailErrSend = errori.msg
+                                                    break;
                                                 default:
                                                     break;
                                             }
@@ -83,38 +75,44 @@
                                 %>
                             </div>
                             <p style="color: green;"><%= success %></p>
+                            <p style="color: rgb(255, 0, 0);"><%= emailErrSend %></p>
                             <label for="mailId">Email</label>
-                            <input style="background-color: grey;" type="text" name="mail" id="mailId"><span style="color: red;"><%= emailErr %></span>
+                            <input type="text" name="mail" id="mailId"><span style="color: red;"><%= emailErr %></span>
                             <br>
                             <label for="titoloId">Titolo</label>
-                            <input  style="background-color: grey"; type="text" name="titolo" id="titoloId"><span style="color: red;"><%= titleErr %></span>
+                            <input type="text" name="titolo" id="titoloId"><span style="color: red;"><%= titleErr %></span>
                             <br>
                             <label for="">Testo</label>
-                            <textarea  style="background-color: grey"; name="testo" id="testoId" cols="30" rows="10"></textarea><span style="color: red">
-                                <%= testoErr %></span>
+                            <textarea name="testo" id="testoId" cols="30" rows="10"></textarea><span style="color: red"><%= testoErr %></span>
                             <br>
                             <button type="submit">Send</button>
                         </div>
                     </form>
                 <!-- </div> -->
             </div>
-
         </div>
 
-        <div class="widget">
-            <button id="button-zoom-1" class="button-zoom" type="button">+</button>
-            <button id="button-zoom-2" class="button-zoom" type="button">-</button>
-        </div>
-
-        <nav class="footer">
-            <%- include("footer/footer.ejs") %>
-            <p id="latency">Server latency: 0 ms</p>
-            <a class="admin" href="/login">Admin</a>
-
+        <nav class="footer" id="footer">
+            <div class="foot-1">
+                <label class="ios-switch form-switch" for="switch">
+                    <input type="checkbox" id="switch" name="switch">
+                    <i></i>
+                </label>
+                <p id="mode-text">Light Mode</p>
+            </div>
+            <div class="foot-2">
+                <%- include("footer/footer.ejs") %>
+            </div>
+            <div class="admin-credits">
+                <!-- <p id="latency">Server latency: 0 ms</p> -->
+                <a class="admin" href="/login">Admin</a>
+            </div>
         </nav>
     </div>
     </div>
-    <script src="/js/api.js"></script>
+
+    <script src="/js/darkMode.js"></script>
+
 </body>
 
 </html>

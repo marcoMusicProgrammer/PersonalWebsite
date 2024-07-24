@@ -8,7 +8,7 @@ const { authenticate,login } = require('../middleware/auth.js');
 
 const storage = multer.diskStorage({
 	destination: (req,file,cb) => {
-		cb(null, "/data")
+		cb(null, 'uploads')
 	},
 	filename: (req,file,cb) => {
 		cb(null, `${Date.now()}-${file.originalname}`)
@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage})
 
-router.get("/upload",authenticate,(req,res)=>{
+router.get("/login/upload",authenticate,(req,res)=>{
     res.render("../public/upload.ejs",{Titolo:"Uploader",anno: getYear()})
     console.log("richiesta /upload")
 })
@@ -31,9 +31,9 @@ const uploadFieldsVideo = upload.single("video")
 const uploadFieldsElectroacoustic = upload.single("electroacoustic-piece")
 const uploadFieldsPortfolio = upload.single("portfolio")
 
-router.post("/upload-music",uploadFieldsMusic,music_validators,workCreateMusic)
-router.post("/upload-video",uploadFieldsVideo,movie_validators,workCreateVideo)
-router.post("/upload-electroacoustic",uploadFieldsElectroacoustic,electroacoustic_validators,workCreateElectroacoustic)
-router.post("/upload-portfolio",uploadFieldsPortfolio,portfolio_validators,workCreatePortfolio)
+router.post("/login/upload-music",uploadFieldsMusic,music_validators,workCreateMusic)
+router.post("/login/upload-video",uploadFieldsVideo,movie_validators,workCreateVideo)
+router.post("/login/upload-electroacoustic",uploadFieldsElectroacoustic,electroacoustic_validators,workCreateElectroacoustic)
+router.post("/login/upload-portfolio",uploadFieldsPortfolio,portfolio_validators,workCreatePortfolio)
 
 module.exports = router

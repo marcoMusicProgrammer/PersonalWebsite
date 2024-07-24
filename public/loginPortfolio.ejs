@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div class="container">
@@ -18,29 +18,31 @@
                         <h2 >Home</h1>
                     </a>
                 </li>
+
+                <li>
+                    <a href="/login/upload">
+                        <h2>Uploader</h2>
+                    </a>
+                </li>
             
                 <li>
-                    <a href="/music">
+                    <a href="/login/music">
                         <h2>Music</h2>
                     </a>
                 </li>
 
                 <li>
-                    <a href="/portfolio">
+                    <a href="/login/portfolio">
                         <h2>Portfolio</h2>
                     </a>
                 </li>
-
-                <li>
-                    <a href="/contacts">
-                        <h2>Contact</h2>
-                    </a>
-                </li>
-
             </ul>
 
         </nav>
         <div class="main">
+            <div class="admin-div">
+                <p class="admin">Admin Page</p>
+            </div>
             <div class="section1">
                 <div id="title-section">
                     <h2>Programming and Sound Design</h2>
@@ -50,14 +52,17 @@
 
                 <div id="body-section">
                     <% if(typeof files !== "undefined") { %>
-                        <% files.forEach(file => { %>
-                            <div class="piece">
+                        <% files.forEach((file,index) => { %>
+                            <div class="piece" id="portfolio-<%= index %>">
                                 <div class="portfolio-piece-info">
-                                    <h3 class="titolo"><strong><%= file.title %></strong></h3>
+                                    <h3 class="titolo"> <strong><%= file.title %></strong></h2>
                                     <p class="descrizione"><strong><%= file.description%></strong></p>
                                     <div>
                                         <a class="download-portfolio" href="/download/<%= file.id%>">Download</a>
                                     </div>
+                                </div>
+                                <div class="deleter">
+                                    <button type="submit" data-id="<%= index %>" class="delete-portfolio" style="background-color: red;">-</button>
                                 </div>
                             </div>
                         <% }); %>
@@ -84,8 +89,38 @@
         </nav>
     </div>
 
-    <!-- <script src="/js/api.js"></script> -->
-    <script src="/js/darkMode.js"></script>
+    <script src="/js/api.js"></script>
+
+    <script>
+        document.querySelectorAll('.delete-portfolio').forEach(button => {
+            button.addEventListener('click', async function(event) {
+                event.preventDefault();
+                const id = this.getAttribute('data-id');
+                try {
+                    const response = await fetch('/login/delete-portfolio', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ id: parseInt(id) })
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        console.log('Server response:', result);
+                        document.getElementById(`portfolio-${id}`).remove();
+                    } else {
+                        const error = await response.json();
+                        console.error('Error deleting file:', error.message);
+                    }
+                } catch (error) {
+                    
+                    console.error('Request error:', error);
+                }
+            });
+        });
+    </script>
+    <script src="/js/darkModeAdmin.js"></script>
 
 </body>
 </html>

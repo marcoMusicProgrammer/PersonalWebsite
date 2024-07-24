@@ -1,8 +1,8 @@
 const { validationResult } = require("express-validator")
-const musicDatabase = require("../../../../../data/musicDatabase.json")
-const videoDatabase = require("../../../../../data/movieDatabase.json")
-const electroacousticDatabase = require("../../../../../data/electroacousticDatabase.json")
-const portfolioDatabase = require("../../../../../data/portfolioDatabase.json")
+const musicDatabase = require("../../../../../../data/musicDatabase.json")
+const videoDatabase = require("../../../../../../data/movieDatabase.json")
+const electroacousticDatabase = require("../../../../../../data/electroacousticDatabase.json")
+const portfolioDatabase = require("../../../../../../data/portfolioDatabase.json")
 const { writeMusicDataBase,writeVideoDataBase,writeElectroacousticDataBase,writePortfolioDataBase } = require("../utilities")
 
 
@@ -12,29 +12,29 @@ const workCreateMusic = (req,res)=>{
     if(errors.errors.length > 0){
         req.session.flash = errors.errors
         console.log(errors.errors)
-        return res.redirect("/upload")
+        return res.redirect("/login/upload")
 
     }else if(!req.files.file || !req.files.image){
         if(!req.files.file && !req.files.image){
             req.session.flash = [{path:"file",msg:"No files selected"},{path:"image",msg:"No files selected"}]
             console.log(req.session.flash)
 
-            return res.redirect("/upload")
+            return res.redirect("/login/upload")
 
         }else if(!req.files.file){
             req.session.flash = [{path:"file",msg:"No files selected"}]
             console.log(req.session.flash)
 
-            return res.redirect("/upload")
+            return res.redirect("/login/upload")
 
         }else if(!req.files.image){
             req.session.flash = [{path:"image",msg:"No files selected"}]
             console.log(req.session.flash)
 
-            return res.redirect("/upload")
+            return res.redirect("/login/upload")
 
         }else{
-            return res.redirect("/upload")
+            return res.redirect("/login/upload")
         }
     }
 
@@ -58,7 +58,7 @@ const workCreateMusic = (req,res)=>{
 
 	req.session.flash = [{path: "music-success", msg: "Upload succeded"}]
 
-	res.redirect("/upload")
+	res.redirect("/login/upload")
 }
 
 const workCreateVideo = (req,res)=>{
@@ -66,14 +66,14 @@ const workCreateVideo = (req,res)=>{
 
     if(errors.errors.length > 0){
         req.session.flash = errors.errors
-        return res.redirect("/upload")
+        return res.redirect("/login/upload")
 
     }else if(!req.file) {
         
         req.session.flash = [{path:"video",msg:"No files selected"}]
         console.log(req.session.flash)
 
-        return res.redirect("/upload")
+        return res.redirect("/login/upload")
     }
 
     const entryVideo = {
@@ -89,7 +89,7 @@ const workCreateVideo = (req,res)=>{
 
 	req.session.flash = [{path: "movie-success", msg: "Upload succeded"}]
 
-	res.redirect("/upload")
+	res.redirect("/login/upload")
 }
 
 const workCreateElectroacoustic = (req,res)=>{
@@ -97,14 +97,14 @@ const workCreateElectroacoustic = (req,res)=>{
 
     if(errors.errors.length > 0){
         req.session.flash = errors.errors
-        return res.redirect("/upload")
+        return res.redirect("/login/upload")
 
     }else if(!req.file) {
         
         req.session.flash = [{path:"electroacoustic-piece",msg:"No files selected"}]
         console.log(req.session.flash)
 
-        return res.redirect("/upload")
+        return res.redirect("/login/upload")
     }
 
     const entryVideo = {
@@ -121,7 +121,7 @@ const workCreateElectroacoustic = (req,res)=>{
 
 	req.session.flash = [{path: "el-success", msg: "Upload succeded"}]
 
-	res.redirect("/upload")
+	res.redirect("/login/upload")
 }
 
 const workCreatePortfolio = (req,res)=>{
@@ -130,14 +130,14 @@ const workCreatePortfolio = (req,res)=>{
     if(errors.errors.length > 0){
         req.session.flash = errors.errors
         console.log(errors.errors)
-        return res.redirect("/upload")
+        return res.redirect("/login/upload")
 
     }else if(!req.file ) {
         
         req.session.flash = [{path:"portfolio",msg:"No files selected"}]
         console.log(req.session.flash)
 
-        return res.redirect("/upload")
+        return res.redirect("/login/upload")
     }
    
     const entryVideo = {
@@ -152,7 +152,7 @@ const workCreatePortfolio = (req,res)=>{
 
 	req.session.flash = [{path: "portfolio-success", msg: "Upload succeded"}]
 
-	res.redirect("/upload")
+	res.redirect("/login/upload")
 }
 
 

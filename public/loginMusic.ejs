@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music</title>
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+<body>
+    <div class="container">
+        <nav class="header" id="header">
+            <div class="admin-header">
+                <div class="title" id="title">
+                    <%- include('header/header.ejs') %>
+                </div>
+            </div>
+
+            <ul class="pagina">
+                <li >
+                    <a href="/" >
+                        <h2 >Home</h1>
+                    </a>
+                </li>
+       
+                <li>
+                    <a href="/login/upload">
+                        <h2>Uploader</h2>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/login/music">
+                        <h2>Music</h2>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/login/portfolio">
+                        <h2>Portfolio</h2>
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <div class="main">
+            <div class="admin-div">
+                <p class="admin">Admin Page</p>
+            </div>
+            <div class="section1">
+                <div id="title-section">
+                    <h2>Electroacustic Compositions</h2>
+                </div>
+                <div class="horizontal-line"></div> 
+                <div id="body-section">
+                    <% if(typeof electroacoustic !== "undefined") { %>
+                        <% electroacoustic.forEach((elPiece,index) => { %>
+                            <div class="piece" id="electr-piece" id="piece-<%= index %>">
+                                <div class="stream">
+                                    <audio src="/stream/<%= elPiece.piece %>" controls="" class="player-audio"></audio>
+                                </div>
+                                <div class="piece-info">
+                                    <h2>TITLE: <strong><%= elPiece.title %></strong></h2>
+                                    <h2>PREMIERE: <strong><%= moment(elPiece.premiere).format("D/MM/YYYY") %></strong></h2>
+                                    <h2>DESCRIPTION: <strong><%= elPiece.description%></strong></h2>
+                                </div>
+                                <div class="deleter">
+                                    <button type="submit"  data-id="<%= index %>" class="delete-music" style="background-color: red;">delete</button>
+                                </div>
+                            </div>
+                        <% }); %>
+                    <% } %>
+            
+                </div>
+
+            </div>
+            <div class="section2">
+                <div id="title-section">
+                    <h2>Movie Compositions</h2>
+                </div>
+                <div class="horizontal-line"></div> 
+                <div id="body-section"> 
+                    <% if(typeof videos !== "undefined") { %>
+                        <% videos.forEach((video,index) => { %>
+                            <div class="piece" id="video-<%= index %>">
+                                <video width="320" height="240" controls>
+                                    <source src="/stream/<%= video.video %>" type="video/mp4" >
+                                </video>
+                                <div class="piece-info">
+                                    <br>
+                                    <h2>TITLE: <strong><%= video.title %></strong></h2>
+                                    <h2>PREMIERE: <strong><%= moment(video.premiere).format("D/MM/YYYY") %></strong></h2>
+                                    <h2>DESCRIPTION: <strong><%= video.description%></strong></h2>
+                                </div>
+                                <div class="deleter">
+                                    <button type="submit"  data-id="<%= index %>" class="delete-video" style="background-color: red;">delete</button>
+                                </div>                            </div>
+                        <% }); %>
+                    <% } %>
+                </div>
+
+            </div>
+            <div class="section3">
+                <div id="title-section">
+                    <h2>Metal Compositions</h2>
+                </div>
+
+                <div class="horizontal-line"></div> 
+
+                <div id="body-section">
+                    <% if(typeof pieces !== "undefined") { %>
+                        <% pieces.forEach((piece,index) => { %>
+                            <div  id="metal-<%= index %>">
+                                <div class="piece">
+                                    <div class="stream">
+                                        <% if (piece.image) { %>
+                                            <img src="/<%= piece.image %>" alt="Immagine di <%= piece.title %>" width="200" height="200">
+                                        <% } else { %>
+                                            <img src="../DSC02723.jpg" alt="Immagine di default">
+                                        <% } %>
+                                    </div>
+                                    <div class="piece-info">
+                                        <h2>TITLE: <strong><%= piece.title %></strong></h2>
+                                        <h2>PREMIERE: <strong><%= moment(piece.premiere).format("D/MM/YYYY") %></strong></h2>
+                                        <h2>DESCRIPTION: <strong><%= piece.description%></strong></h2>
+                                    </div>
+                                    <div class="deleter">
+                                        <button type="submit"  data-id="<%= index %>" class="delete-metal" style="background-color: red;">delete</button>
+                                    </div>
+                                </div>
+                                <div class="audio-stream">
+                                    <% piece.files.forEach(file => { 
+                                        // Estrai il nome del file
+                                        const fullFileName = file.file.split('/').pop();
+                                        // Rimuovi l'identificatore numerico, il trattino e l'estensione del file
+                                        const title = fullFileName.replace(/^\d{10,}-\d{2} - /, '').replace(/\.[^/.]+$/, '');
+                                    %>
+                                        <div class="info-song">      
+                                            <p class="title-song"><%= title %></p>
+                                            <audio src="/stream/<%= file.file %>" controls="" class="player-audio"></audio>
+                                        </div>
+                                <% }); %>
+                                </div>
+                            </div>
+                        <% }); %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+
+        <nav class="footer" id="footer">
+            <div class="foot-1">
+                <label class="ios-switch form-switch" for="switch">
+                    <input type="checkbox" id="switch" name="switch">
+                    <i></i>
+                </label>
+                <p id="mode-text">Light Mode</p>
+            </div>
+            <div class="foot-2">
+                <%- include("footer/footer.ejs") %>
+            </div>
+            <div class="admin-credits">
+                <!-- <p id="latency">Server latency: 0 ms</p> -->
+                <a class="admin" href="/login">Admin</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- <script src="/public/js/color.js"></script> -->
+    <!-- <script src="/js/api.js"></script> -->
+    <script>
+        document.querySelectorAll('.delete-music').forEach(button => {
+            button.addEventListener('click', async function(event) {
+                event.preventDefault();
+                const id = this.getAttribute('data-id');
+                try {
+                    const response = await fetch('/login/delete-music', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ id: parseInt(id) })
+                    });
+                    console.log(response);
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        console.log('Server response:', result);
+                        document.getElementById(`piece-${id}`).remove();
+                    } else {
+                        const error = await response.json();
+                        console.error('Error deleting file:', error.message);
+                    }
+                } catch (error) {
+                    
+                    console.error('Request error:', error);
+                }
+            });
+        });
+
+        document.querySelectorAll('.delete-video').forEach(button => {
+            button.addEventListener('click', async function(event) {
+                event.preventDefault();
+                const id = this.getAttribute('data-id');
+                try {
+                    const response = await fetch('/login/delete-video', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ id: parseInt(id) })
+                    });
+                    console.log(response);
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        console.log('Server response:', result);
+                        document.getElementById(`video-${id}`).remove();
+                    } else {
+                        const error = await response.json();
+                        console.error('Error deleting file:', error.message);
+                    }
+                } catch (error) {
+                    
+                    console.error('Request error:', error);
+                }
+            });
+        });
+
+        document.querySelectorAll('.delete-metal').forEach(button => {
+            button.addEventListener('click', async function(event) {
+                event.preventDefault();
+                const id = this.getAttribute('data-id');
+                try {
+                    const response = await fetch('/login/delete-metal', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ id: parseInt(id) })
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        console.log('Server response:', result);
+                        document.getElementById(`metal-${id}`).remove();
+                    } else {
+                        const error = await response.json();
+                        console.error('Error deleting file:', error.message);
+                    }
+                } catch (error) {
+                    
+                    console.error('Request error:', error);
+                }
+            });
+        });
+    </script>
+
+    <script src="/js/darkModeAdmin.js"></script>
+
+</body>
+</html>

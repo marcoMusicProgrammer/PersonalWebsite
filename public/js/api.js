@@ -1,5 +1,6 @@
 const latencyText = document.getElementById("latency")
 
+
 function updateTime(){
     const time = Date.now()
 

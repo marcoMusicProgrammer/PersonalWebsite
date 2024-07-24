@@ -4,35 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div class="container">
-        <nav class="header"> 
-            <p style="background-color: red ";">Admin Page</p>
-
-            <div class="title">
+        <nav class="header" id="header"> 
+            <div class="admin-div">
+                <p class="admin">Admin Page</p>
+            </div>
+            <div class="title" id="title">
                 <%- include('header/header.ejs') %>
             </div>
-            <ul class="pagina">
-                <li >
-                    <a href="/" >
-                        <h2 >Home</h1>
-                    </a>
-                </li>
-       
-                <li>
-                    <a href="/upload">
-                        <h2>Uploader</h2>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/response">
-                        <h2>Responses</h2>
-                    </a>
-                </li>
-            </ul>
+            <div>
+                <ul class="pagina">
+                    <li >
+                        <a href="/" >
+                            <h2 >Home</h1>
+                        </a>
+                    </li>
+           
+                    <li>
+                        <a href="/login/upload">
+                            <h2>Uploader</h2>
+                        </a>
+                    </li>
+    
+                    <li>
+                        <a href="/login/music">
+                            <h2>Music</h2>
+                        </a>
+                    </li>
+    
+                    <li>
+                        <a href="/login/portfolio">
+                            <h2>Portfolio</h2>
+                        </a>
+                    </li>
+    
+                    <li>
+                        <a href="/login/response">
+                            <h2>Responses</h2>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
         <div class="main">
             <div class="section1">
@@ -44,7 +59,7 @@
 
                 <div id="body-section">
                     <% if(typeof resps !== "undefined") { %>
-                        <% resps.forEach(resp => { %>
+                        <% resps.forEach((resp,index) => { %>
                             <div class="piece">
                                 <div class="responses-info">
                                     <h2>EMAIL: <strong><%= resp.email %></strong></h2>
@@ -52,21 +67,35 @@
                                     <h2>DESCRIPTION: <strong><%= resp.testo%></strong></h2>
                                 </div>
                             </div>
+                            <form action="delete-data" method="post">
+                                <input type="hidden" name="id" value="<%= index %>">
+                                <button type="submit" id="delete_button<%= index %>" class="delete" style="background-color: red;">-</button>
+                            </form>
                         <% }); %>
                     <% } %>
                 </div>
-
             </div>
         </div>
 
-        <nav class="footer">
-            <%- include("footer/footer.ejs") %>
-            <p id="latency">Server latency: 0 ms</p>
-
+        <nav class="footer" id="footer">
+            <div class="foot-1">
+                <label class="ios-switch form-switch" for="switch">
+                    <input type="checkbox" id="switch" name="switch">
+                    <i></i>
+                </label>
+                <p id="mode-text">Light Mode</p>
+            </div>
+            <div class="foot-2">
+                <%- include("footer/footer.ejs") %>
+            </div>
+            <div class="admin-credits">
+                <p id="latency">Server latency: 0 ms</p>
+                <a class="admin" href="/login">Admin</a>
+            </div>
         </nav>
     </div>
 
-    <script src="/js/color.js"></script>
+    <script src="/js/darkModeAdmin.js"></script>
     <script src="/js/api.js"></script>
 
 </body>

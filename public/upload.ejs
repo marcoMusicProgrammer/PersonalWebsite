@@ -4,44 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uploads</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="libraries/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <div class="container"> <!--flex container  -->
-        <nav class="header"> 
-            <p style="background-color: red ";">Admin Page</p>
-            <div class="title">
+    <nav class="container"> <!--flex container  -->
+        <div class="header" id="header"> 
+            <div class="title" id="title">
                 <%- include('header/header.ejs') %>
             </div>
-
-            <ul class="pagina">
-                <li >
-                    <a href="/" >
-                        <h2 >Home</h1>
-                    </a>
-                </li>
-       
-                <li>
-                    <a href="/upload">
-                        <h2>Uploader</h2>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/response">
-                        <h2>Responses</h2>
-                    </a>
-                </li>
-            
-            </ul>
-        </nav>
+            <div>
+                <ul class="pagina">
+                    <li >
+                        <a href="/" >
+                            <h2 >Home</h1>
+                        </a>
+                    </li>
+           
+                    <li>
+                        <a href="/login/upload">
+                            <h2>Uploader</h2>
+                        </a>
+                    </li>
+    
+                    <li>
+                        <a href="/login/music">
+                            <h2>Music</h2>
+                        </a>
+                    </li>
+    
+                    <li>
+                        <a href="/login/portfolio">
+                            <h2>Portfolio</h2>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
         <div class="main-upload">
+            <div class="admin-div">
+                <p class="admin">Admin Page</p>
+            </div>
             <div class="contact-section">
                 <form action="upload-music" method="post" enctype="multipart/form-data">
-                    <div class="div_items">
+                    <div class="div_items" id="div_items">
                         <div>
                             <% var imageErr, titoloErr, venueErr, premiereErr,fileErr, successMusic
                                 if (flash){ 
@@ -102,7 +109,7 @@
             </div>
             <div class="contact-section">
                 <form action="upload-video" method="post" enctype="multipart/form-data">
-                    <div class="div_items">
+                    <div class="div_items" id="div_items">
                         <div>
                             <% var videoTitoloErr, videoVenueErr, videoPremiereErr,videoErr, movieSuccess
                                 if (flash){ 
@@ -158,7 +165,7 @@
             </div>
             <div class="contact-section">
                 <form action="upload-electroacoustic" method="post" enctype="multipart/form-data">
-                    <div class="div_items">
+                    <div class="div_items" id="div_items">
                         <div>
                             <% var electroacousticTitoloErr,electroacousticVenueErr,electroacousticPremiereErr,electroacousticErr, electroacousticSuccess
                                 if (flash){ 
@@ -213,7 +220,7 @@
             </div>
             <div class="contact-section">
                 <form action="upload-portfolio" method="post" enctype="multipart/form-data">
-                    <div class="div_items">
+                    <div class="div_items" id="div_items">
                         <div>
                             <% var portfolioIdErr,portfolioTitoloErr,portfolioErr,portfolioSuccess
                                 if (flash){ 
@@ -263,10 +270,25 @@
             </div>
         </div>
 
-        <nav class="footer">
-            <%- include("footer/footer.ejs") %>
-            <p id="latency">Server latency: 0 ms</p>
+        <nav class="footer" id="footer">
+            <div class="foot-1">
+                <label class="ios-switch form-switch" for="switch">
+                    <input type="checkbox" id="switch" name="switch">
+                    <i></i>
+                </label>
+                <p id="mode-text">Light Mode</p>
+            </div>
+            <div class="foot-2">
+                <%- include("footer/footer.ejs") %>
+            </div>
+            <div class="admin-credits">
+                <!-- <p id="latency">Server latency: 0 ms</p> -->
+                <a class="admin" href="/login">Admin</a>
+            </div>
         </nav>
+
+        <script src="/js/darkModeAdmin.js"></script>
+
     </div>
 </body>
 </html>

@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
     <div class="container">
-        <nav class="header"> 
-            <div class="title">
+        <nav class="header" id="header"> 
+            <div class="title" id="title">
                 <%- include('header/header.ejs') %>
             </div>
             <ul class="pagina">
@@ -47,19 +46,18 @@
                     <h2>Electroacustic Compositions</h2>
                 </div>
                 <div class="horizontal-line"></div> 
-
-                <div id="body-section">
+                <div class="body-section">
                     <% if(typeof electroacoustic !== "undefined") { %>
                         <% electroacoustic.forEach(elPiece => { %>
-                            <div class="piece">
+                            <div class="piece" id="electr-piece">
                                 <div class="stream">
                                     <audio src="/stream/<%= elPiece.piece %>" controls="" class="player-audio"></audio>
                                 </div>
 
                                 <div class="piece-info">
-                                    <h2>TITLE: <strong><%= elPiece.title %></strong></h2>
-                                    <h2>PREMIERE: <strong><%= moment(elPiece.premiere).format("D/MM/YYYY") %></strong></h2>
-                                    <h2>DESCRIPTION: <strong><%= elPiece.description%></strong></h2>
+                                    <h2 class="titolo"><strong><%= elPiece.title %></strong></h2>
+                                    <h2 class="data"><strong><%= moment(elPiece.premiere).format("D/MM/YYYY") %></strong></h2>
+                                    <h2 class="descrizione"><strong><%= elPiece.description%></strong></h2>
                                 </div>
 
 
@@ -72,25 +70,25 @@
 
             </div>
             <div class="section2">
-                <div id="title-section">
+                <div class="title-section">
                     <h2>Movie Compositions</h2>
                 </div>
                 <div class="horizontal-line"></div> 
 
 
-                <div id="body-section"> 
+                <div class="body-section"> 
                     <% if(typeof videos !== "undefined") { %>
                         <% videos.forEach(video => { %>
-                            <div class="piece">
+                            <div class="piece" id="movie-piece">
                                 <video width="320" height="240" controls>
                                     <source src="<%= video.video %>" type="video/mp4" >
                                     <!-- Your browser does not support the video tag. -->
                                 </video>
                                 <div class="piece-info">
                                     <br>
-                                    <h2>TITLE: <strong><%= video.title %></strong></h2>
-                                    <h2>PREMIERE: <strong><%= moment(video.premiere).format("D/MM/YYYY") %></strong></h2>
-                                    <h2>DESCRIPTION: <strong><%= video.description%></strong></h2>
+                                    <h2 class="titolo"><strong><%= video.title %></strong></h2>
+                                    <h2 class="data"><strong><%= moment(video.premiere).format("D/MM/YYYY") %></strong></h2>
+                                    <h2 class="descrizione"><strong><%= video.description%></strong></h2>
                                 </div>
                                 <div class="video">
 
@@ -102,16 +100,16 @@
 
             </div>
             <div class="section3">
-                <div id="title-section">
+                <div class="title-section">
                     <h2>Metal Compositions</h2>
                 </div>
                 
                 <div class="horizontal-line"></div> 
 
-                <div id="body-section">
+                <div class="body-section">
                     <% if(typeof pieces !== "undefined") { %>
                         <% pieces.forEach(piece => { %>
-                            <div class="piece">
+                            <div class="piece" id="metal-piece">
                                 <div class="stream">
                                     <% if (piece.image) { %>
                                         <img src="<%= piece.image %>" alt="Immagine di <%= piece.title %>" width="200" height="200">
@@ -120,9 +118,9 @@
                                     <% } %>
                                 </div>
                                 <div class="piece-info">
-                                    <h2>TITLE: <strong><%= piece.title %></strong></h2>
-                                    <h2>PREMIERE: <strong><%= moment(piece.premiere).format("D/MM/YYYY") %></strong></h2>
-                                    <h2>DESCRIPTION: <strong><%= piece.description%></strong></h2>
+                                    <h2 class="titolo"><strong><%= piece.title %></strong></h2>
+                                    <h2 class="data"><strong><%= moment(piece.premiere).format("D/MM/YYYY") %></strong></h2>
+                                    <h2 class="descrizione"><strong><%= piece.description%></strong></h2>
                                 </div>
                             </div>
                             <div class="audio-stream">
@@ -138,29 +136,33 @@
                                     </div>
                             <% }); %>
                             </div>
-                
                         <% }); %>
                     <% } %>
-            
                 </div>
-
             </div>
-
         </div>
 
-        <nav class="footer">
-            <%- include("footer/footer.ejs") %>
-            <p id="latency">Server latency: 0 ms</p>
-            <a class="admin" href="/login">Admin</a>
-
-
+        <nav class="footer" id="footer">
+            <div class="foot-1">
+                <label class="ios-switch form-switch" for="switch">
+                    <input type="checkbox" id="switch" name="switch">
+                    <i></i>
+                </label>
+                <p id="mode-text">Light Mode</p>
+            </div>
+            <div class="foot-2">
+                <%- include("footer/footer.ejs") %>
+            </div>
+            <div class="admin-credits">
+                <!-- <p id="latency">Server latency: 0 ms</p> -->
+                <a class="admin" href="/login">Admin</a>
+            </div>
         </nav>
     </div>
 
     <!-- <script src="/public/js/color.js"></script> -->
-    <script src="/js/api.js"></script>
-
-
+    <!-- <script src="/js/api.js"></script> -->
+    <script src="/js/darkMode.js"></script>
 
 </body>
 </html>
