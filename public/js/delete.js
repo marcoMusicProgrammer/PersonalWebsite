@@ -135,7 +135,6 @@ async function deletePortfolioData(targetIndex) {
 }
 
 module.exports = {
-    deleteContactData,
     deleteMusicData,
     deleteVideoData,
     deleteMetalData,
