@@ -1,10 +1,10 @@
 const {getYear} = require("../utilities")
 const router = require("express").Router()
 const { authenticate,login } = require('../middleware/auth.js');
-const musicDatabase = require("../../../../../../data/musicDatabase.json")
-const videoDatabase = require("../../../../../../data/movieDatabase.json")
-const electroacousticDatabase = require("../../../../../../data/electroacousticDatabase.json")
-const portfolioDatabase = require("../../../../../../data/portfolioDatabase.json")
+const musicDatabase = require("../../../../../data/musicDatabase.json")
+const videoDatabase = require("../../../../../data/movieDatabase.json")
+const electroacousticDatabase = require("../../../../../data/electroacousticDatabase.json")
+const portfolioDatabase = require("../../../../../data/portfolioDatabase.json")
 const moment = require("moment")
 
 
