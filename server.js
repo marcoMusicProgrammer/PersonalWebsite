@@ -46,7 +46,7 @@ if (!fs.existsSync(databasePortfolio)) {
 
 app.use(express.static(__dirname+"/public"))
 app.use(express.json())
-app.use('/uploads', express.static(path.join(__dirname, '../../../../../data')));
+app.use('/uploads', express.static(path.join(__dirname, '../../../../.../../data')));
 app.set("view engine","ejs")
 app.use("/api",cors())
 
