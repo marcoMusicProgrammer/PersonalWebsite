@@ -49,7 +49,6 @@ function writePortfolioDataBase(){
 
 module.exports = {
     getYear,
-    writeDataBase,
     writeMusicDataBase,
     writeVideoDataBase,
     writeElectroacousticDataBase,
