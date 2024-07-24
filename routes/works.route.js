@@ -10,7 +10,7 @@ const destinationPath = path.resolve(__dirname, '../../../../../../data');
 
 const storage = multer.diskStorage({
 	destination: (req,file,cb) => {
-		cb(null, '../../../../../../data')
+		cb(null, '/data')
 	},
 	filename: (req,file,cb) => {
 		cb(null, `${Date.now()}-${file.originalname}`)

@@ -18,7 +18,7 @@ router.get("/stream/uploads/:audiofile", (req,res)=>{
   }
   
   const filename = req.params.audiofile
-  const audioPath = path.join('./data',filename)
+  const audioPath = path.join(destinationPath,filename)
   const fileSize = statSync(audioPath).size
   const mimeType = mime.lookup(audioPath)
   
