@@ -1,14 +1,16 @@
 const router = require("express").Router()
 const multer = require("multer")
+const path = require("path")
 const { workCreateMusic,workCreateVideo,workCreateElectroacoustic,workCreatePortfolio } = require("../controller/work.controllers.js")
 const { getYear } = require("../utilities")
 const {  music_validators,movie_validators,electroacoustic_validators,portfolio_validators } = require("../middleware/validator")
 const { authenticate,login } = require('../middleware/auth.js');
 
+const destinationPath = path.resolve(__dirname, '../../../../../../data');
 
 const storage = multer.diskStorage({
 	destination: (req,file,cb) => {
-		cb(null, 'uploads')
+		cb(null, '../../../../../../data')
 	},
 	filename: (req,file,cb) => {
 		cb(null, `${Date.now()}-${file.originalname}`)

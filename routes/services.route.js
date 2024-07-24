@@ -6,8 +6,9 @@ const { statSync,createReadStream } = require("fs")
 const portfolioDatabase = require("../../../../../../data/portfolioDatabase.json")
 
 const requestProcessing = new Set();
+const destinationPath = path.resolve(__dirname, '../../../../../../data');
 
-router.get("/stream/data/:audiofile", (req,res)=>{
+router.get("/stream/uploads/:audiofile", (req,res)=>{
   const range = req.headers.range
 
   if(!range){
@@ -15,7 +16,7 @@ router.get("/stream/data/:audiofile", (req,res)=>{
   }
   
   const filename = req.params.audiofile
-  const audioPath = path.join("../../../../../data",filename)
+  const audioPath = path.join(destinationPath,filename)
   const fileSize = statSync(audioPath).size
   const mimeType = mime.lookup(audioPath)
   
@@ -28,7 +29,7 @@ router.get("/stream/data/:audiofile", (req,res)=>{
   const headers = {
       "Content-Range": `bytes ${start}-${end}/${fileSize}`,
       "Accept-Ranges": "bytes",
-      "Content-Lenght": contentLength,
+      "Content-Length": contentLength,
       "Content-Type": "audio/mp3"
   }
 
@@ -42,7 +43,7 @@ router.get("/stream/data/:audiofile", (req,res)=>{
   })
 })
 
-router.get("/stream/data/:videofile", (req, res) => {
+router.get("/stream/uploads/:videofile", (req, res) => {
     const range = req.headers.range;
 
     if (!range) {
@@ -50,7 +51,7 @@ router.get("/stream/data/:videofile", (req, res) => {
     }
 
     const filename = req.params.videofile;
-    const videoPath = path.join("../../../../../data", filename);
+    const videoPath = path.join(destinationPath, filename);
 
     // Controlla se il file esste
     if (!fs.existsSync(videoPath)) {
