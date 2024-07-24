@@ -1,9 +1,9 @@
 const fs = require("fs");
 const path = require("path");
-const musicData = path.join(__dirname, "../../../../../../data/electroacousticDatabase.json");
-const metalData = path.join(__dirname, "../../../../../../data/musicDatabase.json");
-const videoData = path.join(__dirname, "../../../../../../data/movieDatabase.json");
-const portfolioData = path.join(__dirname, "../../../../../../data/portfolioDatabase.json");
+const musicData = path.join(__dirname, "../../../../../data/electroacousticDatabase.json");
+const metalData = path.join(__dirname, "../../../../../data/musicDatabase.json");
+const videoData = path.join(__dirname, "../../../../../data/movieDatabase.json");
+const portfolioData = path.join(__dirname, "../../../../../data/portfolioDatabase.json");
 
 async function deleteMusicData(targetIndex) {
     try {

@@ -3,7 +3,7 @@ const path = require("path")
 const fs = require("fs");
 const mime = require("mime-types")
 const { statSync,createReadStream } = require("fs")
-const portfolioDatabase = require("../../../../../../data/portfolioDatabase.json")
+const portfolioDatabase = require("../../../../../data/portfolioDatabase.json")
 
 const requestProcessing = new Set();
 const destinationPath = path.resolve('../../../../../data');
@@ -16,7 +16,7 @@ router.get("/stream/uploads/:audiofile", (req,res)=>{
   }
   
   const filename = req.params.audiofile
-  const audioPath = path.join(destinationPath,filename)
+  const audioPath = path.join('../../../../../data',filename)
   const fileSize = statSync(audioPath).size
   const mimeType = mime.lookup(audioPath)
   
