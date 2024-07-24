@@ -70,7 +70,7 @@ button {
 }
 
 @media only screen 
-  and (min-device-width: 360px) 
+  and (min-device-width: 320px) 
   and (max-device-width: 765px){
     
     .header {
@@ -99,7 +99,7 @@ button {
 }
 
 @media only screen 
-  and (min-device-width: 360px) 
+  and (min-device-width: 320px) 
   and (max-device-width: 765px){
     
     .admin-div{
@@ -129,7 +129,7 @@ button {
 }
 
 @media only screen 
-  and (min-device-width: 360px) 
+  and (min-device-width: 320px) 
   and (max-device-width: 765px){
     
     .pagina {
@@ -191,7 +191,7 @@ button {
 }
 
 @media only screen 
-  and (min-device-width: 360px) 
+  and (min-device-width: 320px) 
   and (max-device-width: 765px){
 
     .footer {
@@ -217,7 +217,7 @@ button {
 }
 
 @media only screen 
-  and (min-device-width: 360px) 
+  and (min-device-width: 320px) 
   and (max-device-width: 765px){
 
     .footer > * {
@@ -243,7 +243,7 @@ button {
 
 
 @media only screen 
-  and (min-device-width: 360px) 
+  and (min-device-width: 320px) 
   and (max-device-width: 765px){
 
     #mode-text {
@@ -257,7 +257,7 @@ button {
 }
 
 @media only screen 
-  and (min-device-width: 360px) 
+  and (min-device-width: 320px) 
   and (max-device-width: 765px){
 
     .copyright {
@@ -302,7 +302,7 @@ button {
 }
 
 @media only screen 
-  and (min-device-width: 360px) 
+  and (min-device-width: 320px) 
   and (max-device-width: 765px){
     
     .main {
@@ -363,7 +363,7 @@ button {
 }
 
 @media only screen 
-  and (min-device-width: 360px) 
+  and (min-device-width: 320px) 
   and (max-device-width: 765px){
 
     .section1{
@@ -386,7 +386,7 @@ button {
         justify-content: center;
         text-align: center;
         width: 300px;
-        margin-left: 75px;
+        margin-left: 40px;
     }
 }
 
@@ -440,7 +440,7 @@ button {
 }
 
 @media only screen
-    and (min-device-width: 360px) 
+    and (min-device-width: 320px) 
     and (max-device-width: 765px){
 
     #metal-piece {
@@ -650,18 +650,6 @@ button {
     flex-direction: column;
     padding: 10px;
     margin: 50px;
-    box-shadow: 0px 1px 10px 1px black;
-    /* color: rgb(255, 255, 255); */
-    background-color: rgb(216, 216, 216);
-}
-
-.div_items-contact-dark {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 10px;
-    margin: 50px;
     box-shadow: 0px 10px 50px 1px black;
     color: rgb(255, 255, 255);
     background-color: rgb(46, 46, 46);
@@ -716,7 +704,7 @@ button {
 }
 
 @media only screen 
-  and (min-device-width: 360px) 
+  and (min-device-width: 320px) 
   and (max-device-width: 765px){
     
     .title {
@@ -813,7 +801,7 @@ button {
 
 @media only screen
 
-    and (min-device-width: 360px) 
+    and (min-device-width: 320px) 
     and (max-device-width: 765px){
 
     #title-section {
@@ -848,4 +836,17 @@ button {
     width: 300px;
 
 }
+
+
+@media only screen
+    and (min-device-width: 320px)
+    and (max-device-width: 765px) {
+
+        #testoId,#titoloId,#mailId {
+
+            width: 250px;
+        
+        }
+
+    }
 
