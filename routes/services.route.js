@@ -6,7 +6,7 @@ const { statSync,createReadStream } = require("fs")
 const portfolioDatabase = require("../../../../../../data/portfolioDatabase.json")
 
 const requestProcessing = new Set();
-const destinationPath = path.resolve('./data');
+const destinationPath = path.resolve('../../../../../data');
 
 router.get("/uploads/stream/:audiofile", (req,res)=>{
   const range = req.headers.range
