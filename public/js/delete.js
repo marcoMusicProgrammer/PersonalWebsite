@@ -1,8 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 // const { baseDataDir,musicDatabase, movieDatabase, electroacousticDatabase, portfolioDatabase} = require("../../config.js")
-const musicDatabase = require("../../../../../../data/musicDatabase.json")
-const electroacousticDatabase = require("../../../../../../data/electroacousticDatabase.json")
+const musicDatabase = "../../../../../../data/musicDatabase.json"
+const electroacousticDatabase = "../../../../../../data/electroacousticDatabase.json"
 const movieDatabase = require("../../../../../../data/movieDatabase.json")
 const portfolioDatabase = require("../../../../../../data/portfolioDatabase.json")
 
