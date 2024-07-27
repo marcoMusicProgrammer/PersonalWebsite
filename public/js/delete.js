@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { baseDataDir,musicDatabase, movieDatabase, electroacousticDatabase, portfolioDatabase} = require("../../config.js")
+const { musicDatabase, movieDatabase, electroacousticDatabase, portfolioDatabase} = require("../../config.js")
 
 
 async function deleteMusicData(targetIndex) {
@@ -19,7 +19,7 @@ async function deleteMusicData(targetIndex) {
         try {
             const directory = path.join(baseDataDir,"../", fileToDelete)
             console.log(directory)
-            await fs.promises.unlink(path.join(baseDataDir,"../", fileToDelete));
+            await fs.promises.unlink(path.join(dirname,"../../../../../../../../", fileToDelete));
             console.log(`File eliminato correttamente: `, fileToDelete)
         } catch(error) {
             console.error(`Errore nell'eleminazione del file${fileToDelete}`,error)

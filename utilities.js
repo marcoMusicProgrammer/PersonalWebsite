@@ -1,5 +1,4 @@
 const { writeFileSync }  = require("fs")
-
 const {musicData, movieData, electroacousticData, portfolioData, musicDatabase, movieDatabase, electroacousticDatabase, portfolioDatabase } = require("./config")
 
 function getYear(){
@@ -13,7 +12,6 @@ function writeMusicDataBase(){
     } catch (err) {
         console.error("Errore nella scrittura del database:", err)
     }
-    
 }
 
 function writeVideoDataBase(){
@@ -23,7 +21,6 @@ function writeVideoDataBase(){
     } catch (err) {
         console.error("Errore nella scrittura del database:", err)
     }
-
 }
 
 function writeElectroacousticDataBase(){
@@ -51,5 +48,4 @@ module.exports = {
     writeVideoDataBase,
     writeElectroacousticDataBase,
     writePortfolioDataBase
-
 }
