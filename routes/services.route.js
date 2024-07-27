@@ -3,12 +3,11 @@ const path = require("path")
 const fs = require("fs");
 const mime = require("mime-types")
 const { statSync,createReadStream } = require("fs")
-const portfolioDatabase = require("../../../../../data/portfolioDatabase.json")
+const { baseDataDir, portfolioDatabase} = require("../config.js")
 
 const requestProcessing = new Set();
-const destinationPath = path.resolve('../../../../../data');
 
-router.get("/stream/uploads/:audiofile", (req,res)=>{
+router.get("/stream/data/:audiofile", (req,res)=>{
   const range = req.headers.range
 
   console.log("eccomi!")
@@ -18,7 +17,7 @@ router.get("/stream/uploads/:audiofile", (req,res)=>{
   }
   
   const filename = req.params.audiofile
-  const audioPath = path.join('../../../../../data',filename)
+  const audioPath = path.join(baseDataDir,filename)
   const fileSize = statSync(audioPath).size
   const mimeType = mime.lookup(audioPath)
   
@@ -45,47 +44,47 @@ router.get("/stream/uploads/:audiofile", (req,res)=>{
   })
 })
 
-router.get("/stream/uploads/:videofile", (req, res) => {
-    const range = req.headers.range;
+// router.get("/stream/data/:videofile", (req, res) => {
+//     const range = req.headers.range;
 
-    if (!range) {
-      return res.status(400).send("No range provided");
-    }
+//     if (!range) {
+//       return res.status(400).send("No range provided");
+//     }
 
-    const filename = req.params.videofile;
-    const videoPath = path.join(destinationPath, filename);
+//     const filename = req.params.videofile;
+//     const videoPath = path.join(destinationPath, filename);
 
-    // Controlla se il file esste
-    if (!fs.existsSync(videoPath)) {
-      return res.status(404).send("File not found");
-    }
+//     // Controlla se il file esste
+//     if (!fs.existsSync(videoPath)) {
+//       return res.status(404).send("File not found");
+//     }
 
-    const fileSize = statSync(videoPath).size;
-    const mimeType = mime.lookup(videoPath);
+//     const fileSize = statSync(videoPath).size;
+//     const mimeType = mime.lookup(videoPath);
 
-    const CHUNK_SIZE = 10 ** 6; 
-    const start = Number(range.replace(/\D/g, ""));
-    const end = Math.min(start + CHUNK_SIZE, fileSize - 1);
-    const contentLength = end - start + 1;
+//     const CHUNK_SIZE = 10 ** 6; 
+//     const start = Number(range.replace(/\D/g, ""));
+//     const end = Math.min(start + CHUNK_SIZE, fileSize - 1);
+//     const contentLength = end - start + 1;
 
-    const headers = {
-        "Content-Range": `bytes ${start}-${end}/${fileSize}`,
-        "Accept-Ranges": "bytes",
-        "Content-Length": contentLength,
-        "Content-Type": mimeType || "video/mp4" // Use proper video MIME type if available, otherwise default to video/mp4
-    };
+//     const headers = {
+//         "Content-Range": `bytes ${start}-${end}/${fileSize}`,
+//         "Accept-Ranges": "bytes",
+//         "Content-Length": contentLength,
+//         "Content-Type": mimeType || "video/mp4" // Use proper video MIME type if available, otherwise default to video/mp4
+//     };
 
-    res.writeHead(206, headers);
-    const videoStream = createReadStream(videoPath, { start, end });
+//     res.writeHead(206, headers);
+//     const videoStream = createReadStream(videoPath, { start, end });
 
-    // Errore headling
-    videoStream.on('error', (err) => {
-        console.error('Error streaming video:', err);
-        res.status(500).send("Error streaming video");
-    });
+//     // Errore headling
+//     videoStream.on('error', (err) => {
+//         console.error('Error streaming video:', err);
+//         res.status(500).send("Error streaming video");
+//     });
 
-    videoStream.pipe(res);
-});
+//     videoStream.pipe(res);
+// });
 
 
 const preventDuplicateRequests = (req, res, next) => {

@@ -6,9 +6,12 @@ const { getYear } = require("../utilities")
 const {  music_validators,movie_validators,electroacoustic_validators,portfolio_validators } = require("../middleware/validator")
 const { authenticate,login } = require('../middleware/auth.js');
 
+const dataDir = path.resolve(__dirname, '../../../../data');
+
+
 const storage = multer.diskStorage({
 	destination: (req,file,cb) => {
-		cb(null, 'data')
+		cb(null, dataDir)
 	},
 	filename: (req,file,cb) => {
 		cb(null, `${Date.now()}-${file.originalname}`)

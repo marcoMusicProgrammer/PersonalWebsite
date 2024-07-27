@@ -1,9 +1,17 @@
 const { validationResult } = require("express-validator")
-const musicDatabase = require("../../../../../data/musicDatabase.json")
-const videoDatabase = require("../../../../../data/movieDatabase.json")
-const electroacousticDatabase = require("../../../../../data/electroacousticDatabase.json")
-const portfolioDatabase = require("../../../../../data/portfolioDatabase.json")
+const path = require('path')
+const { baseDataDir, electroacousticDatabase, movieDatabase, musicDatabase, portfolioDatabase} = require("../config.js")
 const { writeMusicDataBase,writeVideoDataBase,writeElectroacousticDataBase,writePortfolioDataBase } = require("../utilities")
+const electroacousticData = require(electroacousticDatabase)
+const musicData = require(musicDatabase)
+const movieData = require(movieDatabase)
+const portfolioData = require(portfolioDatabase)
+
+
+const convertToRelativePath = (absolutePath) => {
+    const relativePath = path.relative(baseDataDir, absolutePath);
+    return path.join('data', relativePath).replace(/\//g, '\\');
+};
 
 
 const workCreateMusic = (req,res)=>{
@@ -37,23 +45,25 @@ const workCreateMusic = (req,res)=>{
             return res.redirect("/login/upload")
         }
     }
+    
+    const desiredPathImage = convertToRelativePath(req.files.image[0].path);
+    console.log("Desired Path Music:", desiredPathImage); // Controlla che il percorso relativo sia corretto
 
     const entry = {
         title: req.body.musicTitle,
         venue: req.body.musicVenue,
         premiere: new Date(req.body.musicPremiere).toISOString(),
         description: req.body.description,
-        image: req.files.image[0].path,
+        image: desiredPathImage,
         files: []
     }
 
     req.files.file.forEach(file => {
-        entry.files.push({ file: file.path });
+        const desiredPathFiles = convertToRelativePath(file.path);
+        entry.files.push({ file: desiredPathFiles });
     });
 
-    console.log(req.files.file.length)
-
-    musicDatabase.data.push(entry)
+    musicData.data.push(entry)
     writeMusicDataBase()
 
 	req.session.flash = [{path: "music-success", msg: "Upload succeded"}]
@@ -76,15 +86,18 @@ const workCreateVideo = (req,res)=>{
         return res.redirect("/login/upload")
     }
 
+    const desiredPath = convertToRelativePath(req.file.path);
+    console.log("Desired Path-Movie:", desiredPath); // Controlla che il percorso relativo sia corretto
+
     const entryVideo = {
         title: req.body.movieTitle,
         venue: req.body.movieVenue,
         premiere: new Date(req.body.moviePremiere).toISOString(),
         description: req.body.description,
-        video: req.file.path,
+        video: desiredPath,
     }
 
-    videoDatabase.data.push(entryVideo)
+    movieData.data.push(entryVideo)
     writeVideoDataBase()
 
 	req.session.flash = [{path: "movie-success", msg: "Upload succeded"}]
@@ -107,16 +120,21 @@ const workCreateElectroacoustic = (req,res)=>{
         return res.redirect("/login/upload")
     }
 
+    console.log(req.file.path)
+
+    const desiredPath = convertToRelativePath(req.file.path);
+    console.log("Desired Path-electroacoustic:", desiredPath); // Controlla che il percorso relativo sia corretto
+
     const entryVideo = {
         title: req.body.elTitle,
         venue: req.body.elVenue,
         premiere: new Date(req.body.elPremiere).toISOString(),
         description: req.body.description,
-        piece: req.file.path,
+        piece: desiredPath
     }
 
 
-    electroacousticDatabase.data.push(entryVideo)
+    electroacousticData.data.push(entryVideo)
     writeElectroacousticDataBase()
 
 	req.session.flash = [{path: "el-success", msg: "Upload succeded"}]
@@ -140,14 +158,18 @@ const workCreatePortfolio = (req,res)=>{
         return res.redirect("/login/upload")
     }
    
+
+    const desiredPath = convertToRelativePath(req.file.path);
+    console.log("Desired Path-electroacoustic:", desiredPath); // Controlla che il percorso relativo sia corretto
+
     const entryVideo = {
         id: req.body.portfolioId,
         title: req.body.portfolioTitle,
         description: req.body.description,
-        work: req.file.path,
+        work:desiredPath,
     }
 
-    portfolioDatabase.data.push(entryVideo)
+    portfolioData.data.push(entryVideo)
     writePortfolioDataBase()
 
 	req.session.flash = [{path: "portfolio-success", msg: "Upload succeded"}]

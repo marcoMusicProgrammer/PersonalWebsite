@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Music</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,83 +12,76 @@
             <div class="title" id="title">
                 <%- include('header/header.ejs') %>
             </div>
-            <ul class="pagina">
-                <li >
-                    <a href="/" >
-                        <h2 >Home</h1>
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="/music">
-                        <h2>Music</h2>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/portfolio">
-                        <h2>Portfolio</h2>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/contacts">
-                        <h2>Contact</h2>
-                    </a>
-                </li>
-            </ul>
-
+            <div>
+                <ul class="pagina">
+                    <li>
+                        <a href="/" >
+                            <h2>Home</h1>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/music">
+                            <h2>Music</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/portfolio">
+                            <h2>Portfolio</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/contacts">
+                            <h2>Contact</h2>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
 
         <div class="main">
             <div class="section1">
-                <div id="title-section">
+                <div class="title-section">
                     <h2>Electroacustic Compositions</h2>
                 </div>
                 <div class="horizontal-line"></div> 
                 <div class="body-section">
                     <% if(typeof electroacoustic !== "undefined") { %>
                         <% electroacoustic.forEach(elPiece => { %>
-                            <div class="piece" id="electr-piece">
+                            <div class="piece" id="electr-pie">
                                 <div class="stream">
                                     <audio src="/stream/<%= elPiece.piece %>" controls="" class="player-audio"></audio>
                                 </div>
-
                                 <div class="piece-info">
-                                    <h2 class="titolo"><strong><%= elPiece.title %></strong></h2>
-                                    <h2 class="data"><strong><%= moment(elPiece.premiere).format("D/MM/YYYY") %></strong></h2>
-                                    <h2 class="descrizione"><strong><%= elPiece.description%></strong></h2>
+                                    <h3 class="titolo"><strong><%= elPiece.title %></strong></h3>
+                                    <h3 class="data"><strong><%= moment(elPiece.premiere).format("D/MM/YYYY") %></strong></h3>
+                                    <p class="descrizione"><strong><%= elPiece.description%></strong></p>
                                 </div>
-
-
                             </div>
-                
                         <% }); %>
                     <% } %>
-            
                 </div>
-
             </div>
             <div class="section2">
                 <div class="title-section">
                     <h2>Movie Compositions</h2>
                 </div>
                 <div class="horizontal-line"></div> 
-
-
                 <div class="body-section"> 
                     <% if(typeof videos !== "undefined") { %>
                         <% videos.forEach(video => { %>
                             <div class="piece" id="movie-piece">
-                                <video width="320" height="240" controls>
-                                    <source src="<%= video.video %>" type="video/mp4" >
-                                    <!-- Your browser does not support the video tag. -->
-                                </video>
+                                <div class="stream">
+                                    <video width="320" height="240" controls>
+                                        <source src="<%= video.video %>" type="video/mp4" >
+                                        <!-- Your browser does not support the video tag. -->
+                                    </video>
+                                </div>
+
                                 <div class="piece-info">
                                     <br>
-                                    <h2 class="titolo"><strong><%= video.title %></strong></h2>
-                                    <h2 class="data"><strong><%= moment(video.premiere).format("D/MM/YYYY") %></strong></h2>
-                                    <h2 class="descrizione"><strong><%= video.description%></strong></h2>
+                                    <h3 class="titolo"><strong><%= video.title %></strong></h3>
+                                    <h3 class="data"><strong><%= moment(video.premiere).format("D/MM/YYYY") %></strong></h3>
+                                    <p class="descrizione"><strong><%= video.description%></strong></p>
                                 </div>
                                 <div class="video">
 
@@ -127,6 +120,7 @@
                                 <% piece.files.forEach(file => { 
                                     // Estrai il nome del file
                                     const fullFileName = file.file.split('/').pop();
+                                    
                                     // Rimuovi l'identificatore numerico, il trattino e l'estensione del file
                                     const title = fullFileName.replace(/^\d{10,}-\d{2} - /, '').replace(/\.[^/.]+$/, '');
                                 %>

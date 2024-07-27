@@ -56,7 +56,7 @@
                 <div id="body-section">
                     <% if(typeof electroacoustic !== "undefined") { %>
                         <% electroacoustic.forEach((elPiece,index) => { %>
-                            <div class="piece" id="electr-piece" id="piece-<%= index %>">
+                            <div class="piece" id="piece-<%= index %>">
                                 <div class="stream">
                                     <audio src="/stream/<%= elPiece.piece %>" controls="" class="player-audio"></audio>
                                 </div>

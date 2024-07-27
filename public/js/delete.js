@@ -1,13 +1,12 @@
 const fs = require("fs");
 const path = require("path");
-const musicData = path.join(__dirname, "../../../../../data/electroacousticDatabase.json");
-const metalData = path.join(__dirname, "../../../../../data/musicDatabase.json");
-const videoData = path.join(__dirname, "../../../../../data/movieDatabase.json");
-const portfolioData = path.join(__dirname, "../../../../../data/portfolioDatabase.json");
+const { baseDataDir,musicDatabase, movieDatabase, electroacousticDatabase, portfolioDatabase} = require("../../config.js")
+
+const { } = require("../../config.js")
 
 async function deleteMusicData(targetIndex) {
     try {
-        const data = await fs.promises.readFile(musicData, "utf8");
+        const data = await fs.promises.readFile(electroacousticDatabase, "utf8");
         let jsonData = JSON.parse(data);
 
         console.log(targetIndex)
@@ -15,10 +14,13 @@ async function deleteMusicData(targetIndex) {
         if (targetIndex < 0 || targetIndex >= jsonData.data.length) {
             throw new Error(`Indice non valido: ${targetIndex}`);
         }
-        
+
+        const fileToDelete = jsonData.data[targetIndex].piece;
+
         try {
-            const fileToDelete = jsonData.data[targetIndex].piece;
-            await fs.promises.unlink(path.join(__dirname, "../../", fileToDelete));
+            const directory = path.join(baseDataDir,"../", fileToDelete)
+            console.log(directory)
+            await fs.promises.unlink(path.join(baseDataDir,"../", fileToDelete));
             console.log(`File eliminato correttamente: `, fileToDelete)
         } catch(error) {
             console.error(`Errore nell'eleminazione del file${fileToDelete}`,error)
@@ -27,7 +29,7 @@ async function deleteMusicData(targetIndex) {
         await jsonData.data.splice(targetIndex, 1);
 
         const updatedJson = JSON.stringify(jsonData, null, 2);
-        await fs.promises.writeFile(musicData, updatedJson, "utf8");
+        await fs.promises.writeFile(electroacousticDatabase, updatedJson, "utf8");
         
         console.log("Oggetto rimosso con successo");
     } catch (error) {
@@ -38,7 +40,7 @@ async function deleteMusicData(targetIndex) {
 
 async function deleteMetalData(targetIndex) {
     try {
-        const data = await fs.promises.readFile(metalData, "utf8");
+        const data = await fs.promises.readFile(musicDatabase, "utf8");
         let jsonData = JSON.parse(data);
 
         if (targetIndex < 0 || targetIndex >= jsonData.data.length) {
@@ -48,7 +50,7 @@ async function deleteMetalData(targetIndex) {
         for (let index = 0; index < jsonData.data[targetIndex].files.length;index++) {
             const fileToDelete = jsonData.data[targetIndex].files[index].file;
             try {
-                await fs.promises.unlink(path.join(__dirname, "../../", fileToDelete));
+                await fs.promises.unlink(path.join(baseDataDir,"../", fileToDelete));
                 console.log(`File eliminato correttamente: ${fileToDelete}`)
             } catch(error) {
                 console.error(`Errore nell'eliminazione del file ${fileToDelete}`,error)
@@ -57,7 +59,7 @@ async function deleteMetalData(targetIndex) {
 
         const imageToDelete = jsonData.data[targetIndex].image;
         try {
-            await fs.promises.unlink(path.join(__dirname,"../../",imageToDelete))
+            await fs.promises.unlink(path.join(baseDataDir,"../",imageToDelete))
             console.log(`File eliminato correttamente: ${imageToDelete}`)
         } catch(error) {
             console.error(`Errore nell'eliminazione del file ${imageToDelete}`,error)
@@ -65,7 +67,7 @@ async function deleteMetalData(targetIndex) {
 
         await jsonData.data.splice(targetIndex, 1);
         const updatedJson = JSON.stringify(jsonData, null, 2);
-        await fs.promises.writeFile(metalData, updatedJson, "utf8");
+        await fs.promises.writeFile(musicDatabase, updatedJson, "utf8");
         
         console.log("Oggetto rimosso con successo");
     } catch (error) {
@@ -76,16 +78,17 @@ async function deleteMetalData(targetIndex) {
 
 async function deleteVideoData(targetIndex) {
     try {
-        const data = await fs.promises.readFile(videoData, "utf8");
+        const data = await fs.promises.readFile(movieDatabase, "utf8");
         let jsonData = JSON.parse(data);
 
         if (targetIndex < 0 || targetIndex >= jsonData.data.length) {
             throw new Error(`Indice non valido: ${targetIndex}`);
         }
 
+        const fileToDelete = jsonData.data[targetIndex].video;
+
         try {
-            const fileToDelete = jsonData.data[targetIndex].video;
-            await fs.promises.unlink(path.join(__dirname, "../../", fileToDelete));
+            await fs.promises.unlink(path.join(baseDataDir,"../", fileToDelete));
             console.log(`File eliminato correttamente: ${fileToDelete}`)
         } catch (error) {
             console.error(`Errore nell'eliminazione del file: ${fileToDelete}`,error)
@@ -94,7 +97,7 @@ async function deleteVideoData(targetIndex) {
         jsonData.data.splice(targetIndex, 1);
 
         const updatedJson = JSON.stringify(jsonData, null, 2);
-        await fs.promises.writeFile(videoData, updatedJson, "utf8");
+        await fs.promises.writeFile(movieDatabase, updatedJson, "utf8");
         
         console.log("Oggetto rimosso con successo");
     } catch (error) {
@@ -105,7 +108,7 @@ async function deleteVideoData(targetIndex) {
 
 async function deletePortfolioData(targetIndex) {
     try {
-        const data = await fs.promises.readFile(portfolioData, "utf8");
+        const data = await fs.promises.readFile(portfolioDatabase, "utf8");
         let jsonData = JSON.parse(data);
 
         console.log(targetIndex)
@@ -113,10 +116,11 @@ async function deletePortfolioData(targetIndex) {
         if (targetIndex < 0 || targetIndex >= jsonData.data.length) {
             throw new Error(`Indice non valido: ${targetIndex}`);
         }
+
+        const fileToDelete = jsonData.data[targetIndex].work;
         
         try {
-            const fileToDelete = jsonData.data[targetIndex].work;
-            await fs.promises.unlink(path.join(__dirname, "../../", fileToDelete));
+            await fs.promises.unlink(path.join(baseDataDir,"../", fileToDelete));
             console.log(`File eliminato correttamente: `, fileToDelete)
         } catch(error) {
             console.error(`Errore nell'eleminazione del file${fileToDelete}`,error)
@@ -125,7 +129,7 @@ async function deletePortfolioData(targetIndex) {
         await jsonData.data.splice(targetIndex, 1);
 
         const updatedJson = JSON.stringify(jsonData, null, 2);
-        await fs.promises.writeFile(portfolioData, updatedJson, "utf8");
+        await fs.promises.writeFile(portfolioDatabase, updatedJson, "utf8");
         
         console.log("Oggetto rimosso con successo");
     } catch (error) {
