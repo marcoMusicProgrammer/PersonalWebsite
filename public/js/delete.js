@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 // const { baseDataDir,musicDatabase, movieDatabase, electroacousticDatabase, portfolioDatabase} = require("../../config.js")
 const musicDatabase = "../../../../../../data/musicDatabase.json"
-const electroacousticDatabase = "../../../../../../data/electroacousticDatabase.json"
+const electroacousticDatabase = path.join(__dirname, "../../data/electroacousticDatabase.json");
 const movieDatabase = require("../../../../../../data/movieDatabase.json")
 const portfolioDatabase = require("../../../../../../data/portfolioDatabase.json")
 
@@ -10,7 +10,7 @@ const { } = require("../../config.js")
 
 async function deleteMusicData(targetIndex) {
     try {
-        const data = await fs.promises.readFile("../../../../../../data/musicDatabase.json", "utf8");
+        const data = await fs.promises.readFile(electroacousticDatabase, "utf8");
         let jsonData = JSON.parse(data);
 
         console.log("indice: ",targetIndex)
@@ -26,7 +26,7 @@ async function deleteMusicData(targetIndex) {
             console.log("file da eliminare: ",fileToDelete)
             const directory = path.join(baseDataDir, fileToDelete)
             console.log(directory)
-            await fs.promises.unlink(path.join("../../../../../../" ,fileToDelete));
+            await fs.promises.unlink(path.join(__dirname, "../../", fileToDelete),fileToDelete));
             console.log(`File eliminato correttamente: `, fileToDelete)
         } catch(error) {
             console.error(`Errore nell'eleminazione del file${fileToDelete}`,error)
@@ -35,7 +35,7 @@ async function deleteMusicData(targetIndex) {
         await jsonData.data.splice(targetIndex, 1);
 
         const updatedJson = JSON.stringify(jsonData, null, 2);
-        await fs.promises.writeFile("../../../../../../data", updatedJson, "utf8");
+        await fs.promises.writeFile(electroacousticDatabase, updatedJson, "utf8");
         
         console.log("Oggetto rimosso con successo");
     } catch (error) {
