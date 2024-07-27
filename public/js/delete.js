@@ -9,14 +9,14 @@ async function deleteMusicData(targetIndex) {
         const data = await fs.promises.readFile(electroacousticDatabase, "utf8");
         let jsonData = JSON.parse(data);
 
-        console.log(targetIndex)
+        console.log("indice: ",targetIndex)
 
         if (targetIndex < 0 || targetIndex >= jsonData.data.length) {
             throw new Error(`Indice non valido: ${targetIndex}`);
         }
 
         const fileToDelete = jsonData.data[targetIndex].piece;
-        console.log(fileToDelete)
+        console.log("file da eliminare: ",fileToDelete)
 
         try {
             const directory = path.join(baseDataDir,"../", fileToDelete)
