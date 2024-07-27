@@ -26,7 +26,7 @@ async function deleteMusicData(targetIndex) {
             console.log("file da eliminare: ",fileToDelete)
             const directory = path.join(baseDataDir, fileToDelete)
             console.log(directory)
-            await fs.promises.unlink(path.join(__dirname, "../../", fileToDelete),fileToDelete));
+            await fs.promises.unlink(path.join(electroacousticDatabase, "../", fileToDelete),fileToDelete));
             console.log(`File eliminato correttamente: `, fileToDelete)
         } catch(error) {
             console.error(`Errore nell'eleminazione del file${fileToDelete}`,error)
