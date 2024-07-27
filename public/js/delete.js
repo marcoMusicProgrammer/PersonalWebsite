@@ -16,6 +16,7 @@ async function deleteMusicData(targetIndex) {
         }
 
         const fileToDelete = jsonData.data[targetIndex].piece;
+        console.log(fileToDelete)
 
         try {
             const directory = path.join(baseDataDir,"../", fileToDelete)
