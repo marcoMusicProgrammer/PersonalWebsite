@@ -10,7 +10,7 @@ const { } = require("../../config.js")
 
 async function deleteMusicData(targetIndex) {
     try {
-        const data = await fs.promises.readFile(electroacousticDatabase, "utf8");
+        const data = await fs.promises.readFile("../../../../../../data/musicDatabase.json", "utf8");
         let jsonData = JSON.parse(data);
 
         console.log("indice: ",targetIndex)
@@ -19,13 +19,14 @@ async function deleteMusicData(targetIndex) {
             throw new Error(`Indice non valido: ${targetIndex}`);
         }
 
-        const fileToDelete = jsonData.data[targetIndex].piece;
-        console.log("file da eliminare: ",fileToDelete)
+
 
         try {
+            const fileToDelete = jsonData.data[targetIndex].piece;
+            console.log("file da eliminare: ",fileToDelete)
             const directory = path.join(baseDataDir, fileToDelete)
             console.log(directory)
-            await fs.promises.unlink(path.join(baseDataDir, fileToDelete));
+            await fs.promises.unlink(path.join("../../../../../../" ,fileToDelete));
             console.log(`File eliminato correttamente: `, fileToDelete)
         } catch(error) {
             console.error(`Errore nell'eleminazione del file${fileToDelete}`,error)
@@ -34,7 +35,7 @@ async function deleteMusicData(targetIndex) {
         await jsonData.data.splice(targetIndex, 1);
 
         const updatedJson = JSON.stringify(jsonData, null, 2);
-        await fs.promises.writeFile(electroacousticDatabase, updatedJson, "utf8");
+        await fs.promises.writeFile("../../../../../../data", updatedJson, "utf8");
         
         console.log("Oggetto rimosso con successo");
     } catch (error) {
