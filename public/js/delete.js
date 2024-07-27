@@ -1,10 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 // const { baseDataDir,musicDatabase, movieDatabase, electroacousticDatabase, portfolioDatabase} = require("../../config.js")
-const musicDatabase = require("../../../../../data")
-const electroacousticDatabase = require("../../../../../data")
-const movieDatabase = require("../../../../../data")
-const portfolioDatabase = require("../../../../../data")
+const musicDatabase = require("../../../../../data/musicDatabase.json")
+const electroacousticDatabase = require("../../../../../data/electroacousticDatabase.json")
+const movieDatabase = require("../../../../../data/movieDatabase.json")
+const portfolioDatabase = require("../../../../../data/portfolioDatabase.json")
 
 const { } = require("../../config.js")
 
@@ -23,9 +23,9 @@ async function deleteMusicData(targetIndex) {
         console.log("file da eliminare: ",fileToDelete)
 
         try {
-            const directory = path.join(baseDataDir,"../", fileToDelete)
+            const directory = path.join(baseDataDir, fileToDelete)
             console.log(directory)
-            await fs.promises.unlink(path.join(baseDataDir,"../", fileToDelete));
+            await fs.promises.unlink(path.join(baseDataDir, fileToDelete));
             console.log(`File eliminato correttamente: `, fileToDelete)
         } catch(error) {
             console.error(`Errore nell'eleminazione del file${fileToDelete}`,error)
