@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 // const { baseDataDir,musicDatabase, movieDatabase, electroacousticDatabase, portfolioDatabase} = require("../../config.js")
 const musicDatabase = "../../../../../../data/musicDatabase.json"
-const electroacousticDatabase = path.join(__dirname, "../../data/electroacousticDatabase.json");
+const electroacousticDatabase = path.join(__dirname, "../../../../../../data/electroacousticDatabase.json");
 const movieDatabase = require("../../../../../../data/movieDatabase.json")
 const portfolioDatabase = require("../../../../../../data/portfolioDatabase.json")
 
@@ -18,8 +18,6 @@ async function deleteMusicData(targetIndex) {
         if (targetIndex < 0 || targetIndex >= jsonData.data.length) {
             throw new Error(`Indice non valido: ${targetIndex}`);
         }
-
-
 
         try {
             const fileToDelete = jsonData.data[targetIndex].piece;
