@@ -9,7 +9,7 @@ const portfolioData = require(portfolioDatabase)
 
 const convertToRelativePath = (absolutePath) => {
     const relativePath = path.relative(baseDataDir, absolutePath);
-    return path.join('data', relativePath).replace(/\//g, '\\');
+    return path.join('data', relativePath).replace(/\//g, '//');
 };
 
 const workCreateMusic = (req,res)=>{
