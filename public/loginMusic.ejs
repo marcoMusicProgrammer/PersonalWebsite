@@ -182,7 +182,7 @@
                         },
                         body: JSON.stringify({ id: parseInt(id) })
                     });
-                    console.log(response);
+                    console.log("responde: ",response);
 
                     if (response.ok) {
                         const result = await response.json();
@@ -193,7 +193,6 @@
                         console.error('Error deleting file:', error.message);
                     }
                 } catch (error) {
-                    
                     console.error('Request error:', error);
                 }
             });
