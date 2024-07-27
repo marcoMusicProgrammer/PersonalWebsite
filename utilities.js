@@ -1,10 +1,6 @@
 const { writeFileSync }  = require("fs")
 
 const {musicData, movieData, electroacousticData, portfolioData, musicDatabase, movieDatabase, electroacousticDatabase, portfolioDatabase } = require("./config")
-// const musicDatabase = require("../../../data/musicDatabase.json")
-// const videoDatabase = require("../../../data/movieDatabase.json")
-// const electroacousticDatabase = require("../../../data/electroacousticDatabase.json")
-// const portfolioDatabase = require("../../../data/portfolioDatabase.json")
 
 function getYear(){
     return  new Date().getFullYear()

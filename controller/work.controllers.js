@@ -7,12 +7,10 @@ const musicData = require(musicDatabase)
 const movieData = require(movieDatabase)
 const portfolioData = require(portfolioDatabase)
 
-
 const convertToRelativePath = (absolutePath) => {
     const relativePath = path.relative(baseDataDir, absolutePath);
     return path.join('data', relativePath).replace(/\//g, '\\');
 };
-
 
 const workCreateMusic = (req,res)=>{
     const errors = validationResult(req)

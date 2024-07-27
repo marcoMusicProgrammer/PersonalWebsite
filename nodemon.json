@@ -1,11 +1,11 @@
 {
-    "watch": ["../../../data","."],
+    "watch": ["../../../../../data","."],
     "databasePaths": {
-      "baseDataDir": "../../../data",
-      "musicDatabase": "../../../data/musicDatabase.json",
-      "movieDatabase": "../../../data/movieDatabase.json",
-      "electroacousticDatabase": "../../../data/electroacousticDatabase.json",
-      "portfolioDatabase": "../../../data/portfolioDatabase.json"
+      "baseDataDir": "../../../../../data",
+      "musicDatabase": "../../../../../data/musicDatabase.json",
+      "movieDatabase": "../../../../../data/movieDatabase.json",
+      "electroacousticDatabase": "../../../../../data/electroacousticDatabase.json",
+      "portfolioDatabase": "../../../../../data/portfolioDatabase.json"
     }
   }
   
