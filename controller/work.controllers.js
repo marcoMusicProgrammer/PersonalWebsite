@@ -7,9 +7,11 @@ const musicData = require(musicDatabase)
 const movieData = require(movieDatabase)
 const portfolioData = require(portfolioDatabase)
 
+
 const convertToRelativePath = (absolutePath) => {
     const relativePath = path.relative(baseDataDir, absolutePath);
-    return path.join('data', relativePath).replace(/\//g, '//');
+    // in render è importante tener conto del tipo di slash, su windows sono \\ mentre su sistemi linux e IOS //
+    return path.join('data', relativePath).replace(/\//g, '/');
 };
 
 const workCreateMusic = (req,res)=>{

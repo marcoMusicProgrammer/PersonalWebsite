@@ -9,9 +9,7 @@ const requestProcessing = new Set();
 
 router.get("/stream/data/:audiofile", (req,res)=>{
   const range = req.headers.range
-
-  console.log("eccomi!")
-
+  
   if(!range){
       return res.status(400).send("No range")
   }
