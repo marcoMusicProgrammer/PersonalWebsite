@@ -13,9 +13,10 @@ async function deleteMusicData(targetIndex) {
             throw new Error(`Indice non valido: ${targetIndex}`);
         }
 
+        const fileToDelete = jsonData.data[targetIndex].piece;
+        console.log(fileToDelete)
+
         try {
-            const fileToDelete = jsonData.data[targetIndex].piece;
-            console.log(fileToDelete)
             const directory = path.join(baseDataDir,"../", fileToDelete)
             console.log(directory)
             await fs.promises.unlink(path.join(baseDataDir,"../", fileToDelete));
