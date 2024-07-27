@@ -3,15 +3,10 @@ const path = require("path");
 const { baseDataDir,musicDatabase, movieDatabase, electroacousticDatabase, portfolioDatabase} = require("../../config.js")
 
 
-
-const { } = require("../../config.js")
-
 async function deleteMusicData(targetIndex) {
     try {
-        console.log(musicData)
         const data = await fs.promises.readFile(electroacousticDatabase, "utf8");
         let jsonData = JSON.parse(data);
-
         console.log(jsonData)
 
         if (targetIndex < 0 || targetIndex >= jsonData.data.length) {
