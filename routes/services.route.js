@@ -3,7 +3,7 @@ const path = require("path")
 const fs = require("fs");
 const mime = require("mime-types")
 const { statSync,createReadStream } = require("fs")
-const { baseDataDir, portfolioDatabase} = require("../config.js")
+const { baseDataDir, portfolioData} = require("../config.js")
 
 const requestProcessing = new Set();
 
@@ -101,7 +101,7 @@ router.get('/download/:id', preventDuplicateRequests,(req, res) => {
   const fileId = req.params.id;
   console.log("FileID: " + fileId);
 
-  const file = portfolioDatabase.data.find(f => f.id == fileId);
+  const file = portfolioData.data.find(f => f.id == fileId);
   console.log("File: " + JSON.stringify(file));
 
   if (file) {
