@@ -39,6 +39,9 @@ function setTheme(toggle) {
         if(contacts){
         contacts.className = "div_items-contact";
         }
+        if(modal){
+            modal.className = "modal-content"
+        }
         btn.checked = false;
     }
 }
