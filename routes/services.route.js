@@ -105,7 +105,7 @@ router.get('/download/:id', preventDuplicateRequests,(req, res) => {
   console.log("File: " + JSON.stringify(file));
 
   if (file) {
-      const filePath = path.join(baseDataDir,file.work);
+      const filePath = path.join(baseDataDir,"../",file.work);
       console.log("Path: " + filePath);
 
       if (fs.existsSync(filePath)) {
