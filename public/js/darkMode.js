@@ -5,6 +5,7 @@ const piece = document.getElementById("piece")
 let modeText = document.getElementById("mode-text");
 let title = document.getElementById("title");
 const contacts = document.getElementById("div_items-contact");
+const modal = document.getElementById("modal-content")
 
 // Function to set the theme based on the value of toggle
 function setTheme(toggle) {
@@ -20,6 +21,9 @@ function setTheme(toggle) {
         }
         if(contacts){
             contacts.className = "div_items-contact-dark"
+        }
+        if(modal){
+            modal.className = "modal-content-dark"
         }
         btn.checked = true;
     } else {

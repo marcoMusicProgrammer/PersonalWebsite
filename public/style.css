@@ -875,10 +875,10 @@ button {
     }
 
     .modal-content-dark {
-        background-color: #414141;
+        background-color: #292929;
         margin: 5% auto; /* 15% from the top and centered */
         padding: 20px;
-        border-radius: 20%;
+        border-radius: 11px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         border: 1px solid #888;
         width: 80%; /* Could be more or less, depending on screen size */
