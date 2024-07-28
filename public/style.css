@@ -416,7 +416,8 @@ button {
 
 .piece-info {
     margin-top: 20px;
-    margin-left: 100px
+    margin-left: 100px;
+    align-self: center;
 }
 
 .audio-stream {
@@ -472,6 +473,7 @@ button {
         display: grid;
         align-self: center;
         justify-self: center;
+        text-align: center;
         margin-left: 0%;
     }
 
