@@ -12,6 +12,15 @@ router.get("/",(req,res)=>{
     console.log("richiesta /Home")
 }) 
 
+router.get('/api/modal-status', (req, res) => {
+    res.json({ modalShown: req.session.modalShown });
+});
+
+router.post('/api/modal-status', (req, res) => {
+    req.session.modalShown = true;
+    res.sendStatus(200);
+});
+
 router.get("/music",(req,res)=>{
     res.render("../public/music.ejs",{Titolo:"MUSIC",anno:getYear(),pieces:musicData.data, moment:moment,filePieces:musicData.data.files,videos:movieData.data,electroacoustic:electroacousticData.data})
     console.log("Richiesta /Music")
